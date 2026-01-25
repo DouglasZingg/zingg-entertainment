@@ -1,0 +1,159 @@
+﻿body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #0f0f0f;
+    color: #e6e6e6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+    nav a {
+        color: #e6e6e6;
+        margin-left: 16px;
+        text-decoration: none;
+    }
+
+.logo {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: bold;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+}
+
+.tech-tags span {
+    display: inline-block;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    padding: 6px 10px;
+    margin-right: 8px;
+    margin-top: 8px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.project-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+    .project-card .meta {
+        opacity: 0.7;
+        font-size: 0.9rem;
+    }
+
+.filters {
+    margin: 20px 0;
+}
+
+    .filters button {
+        background: #1a1a1a;
+        border: 1px solid #2a2a2a;
+        color: #e6e6e6;
+        padding: 6px 12px;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+        .filters button:hover {
+            border-color: #61dafb;
+        }
+
+.about-section {
+    margin-top: 32px;
+    max-width: 800px;
+}
+
+    .about-section h2 {
+        margin-bottom: 8px;
+    }
+
+    .about-section ul {
+        padding-left: 20px;
+    }
+
+    .about-section li {
+        margin-bottom: 6px;
+    }
+
+.project-detail {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.project-header {
+    margin-bottom: 32px;
+}
+
+.project-subtitle {
+    opacity: 0.8;
+    margin-top: 8px;
+}
+
+.project-meta span {
+    display: inline-block;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    padding: 4px 10px;
+    margin-right: 8px;
+    margin-top: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+}
+
+.project-detail section {
+    margin-top: 32px;
+}
+
+.project-detail h2 {
+    margin-bottom: 8px;
+}
+
+section {
+    margin-top: 2.5rem;
+    max-width: 800px;
+}
+
+    section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+    }
+
+    section p,
+    section li {
+        color: #bdbdbd;
+        line-height: 1.6;
+    }
+
+    section ul {
+        padding-left: 1.2rem;
+    }
+
+pre {
+    background: #0f0f0f;
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    color: #e6e6e6;
+}

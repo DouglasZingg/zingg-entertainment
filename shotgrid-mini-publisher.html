@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Tormented Souls | Douglas Zingg</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">DZ</a>
+        <div class="nav-links">
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="project-detail">
+
+        <header class="project-header">
+            <h1> Pipeline Validation Tool</h1>
+            <p class="project-subtitle">
+                Automated validation and reporting tool for game/VFX assets before engine import.
+            </p>
+
+            <div class="project-meta">
+                <span>Python</span>
+                <span>C++</span>
+                <span>Pipeline / VFX</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Overview</h2>
+            <p>
+                This tool was built to catch common asset issues early in the pipeline,
+                reducing downstream errors and minimizing manual QA work for artists
+                and technical staff.
+            </p>
+        </section>
+
+        <section>
+            <h2>Problem</h2>
+            <p>
+                In production environments, asset inconsistencies (naming, scale,
+                missing metadata) often surface late in the pipeline, causing rework
+                and blocking downstream tasks.
+            </p>
+        </section>
+
+        <section>
+            <h2>Solution</h2>
+            <p>
+                I implemented a command-line validation tool that analyzes assets
+                before engine import, generates structured reports, and integrates
+                cleanly into existing build and automation workflows.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Details</h2>
+            <ul>
+                <li>Python-based validation layer for rapid iteration</li>
+                <li>C++ components for performance-sensitive checks</li>
+                <li>Config-driven rules to support multiple projects</li>
+                <li>CLI interface suitable for CI integration</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Challenges & Tradeoffs</h2>
+            <ul>
+                <li>Balancing strict validation with artist flexibility</li>
+                <li>Handling incomplete or malformed asset data gracefully</li>
+                <li>Designing extensible validation rules without overengineering</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <ul>
+                <li>Earlier detection of asset issues</li>
+                <li>Reduced manual QA time</li>
+                <li>Improved consistency across projects</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Links</h2>
+            <p>
+                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
+                    View Source Code 
+                </a>
+            </p>
+        </section>
+
+    </main>
+
+</body>
+</html>

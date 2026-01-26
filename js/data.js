@@ -5,7 +5,7 @@ const projects = [
         summary: "A module graphics engine that diplays a space scene.",
         tech: ["C#"],
         page: "project-basic-graphic-engine.html",
-        domain: "Pipeline / VFX",
+        domain: "VFX",
         featured: true,
         github: "https://github.com/DouglasZingg/GraphicsProject"
     },
@@ -82,7 +82,7 @@ const projects = [
     {
         id: "pipeline-delivery-packager",
         title: "Pipeline Devlivery Packager",
-        summary: "Standalone desktop pipeline utility that validates and packages an asset delivery into a clean “studio drop” layout, then exports a manifest.json and an HTML report.",
+        summary: "Standalone desktop pipeline utility that validates and packages an asset delivery into a clean 'studio drop' layout, then exports a manifest.json and an HTML report.",
         tech: ["Python"],
         page: "pipeline-delivery-packager.html",
         domain: ["VFX", "Game Development"], 

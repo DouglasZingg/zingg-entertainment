@@ -2,99 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <title>USD Inspector & Packager | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
             <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
-
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>USD Inspector & Packager</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Standalone pipeline utility for inspecting USD assets and packaging dependencies into a clean, portable drop.
+                Designed to demonstrate OpenUSD (pxr), dependency scanning, validation reporting, and batch packaging.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>OpenUSD (pxr)</span>
+                <span>Pipeline Tools</span>
+                <span>Batch and Packaging</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                USD assets frequently depend on external files (sublayers, references, payloads, textures). Missing or broken
+                dependencies cause downstream failures in DCCs, render farms, and engine ingestion.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built a standalone inspector that scans USD files for dependency issues, produces severity-ranked results,
+                and a packager that collects dependencies into a clean folder structure with a detailed manifest.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Dependency Inspection</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li>Scans USD assets for sublayers, references, payloads, and texture dependencies.</li>
+                <li>Supports <code>.usd</code>, <code>.usda</code>, <code>.usdc</code>, and <code>.usdz</code>.</li>
+                <li>Flags missing/unresolved/invalid dependencies with severity (<strong>ERROR</strong>, <strong>WARNING</strong>, <strong>INFO</strong>).</li>
+                <li>Exports structured results to <code>report.json</code>.</li>
+            </ul>
+
+            <h3>Packaging & Portability</h3>
+            <ul>
+                <li>Packages USD files and resolved dependencies into a clean, organized output folder.</li>
+                <li>Generates <code>manifest.json</code> describing copied files, source paths, destination paths, and metadata.</li>
+                <li>Collision safe copying to prevent overwrites when names conflict.</li>
+                <li>Optional SHA-256 hashing for integrity verification.</li>
+            </ul>
+
+            <h3>Portable Mode</h3>
+            <ul>
+                <li>Rewrites asset paths inside packaged USD files to use packaged-relative paths.</li>
+                <li>Produces self contained, portable asset drops suitable for review, vendor handoff, or archival.</li>
+            </ul>
+
+            <h3>Batch Processing</h3>
+            <ul>
+                <li>Scans and packages entire folders of USD files.</li>
+                <li>Writes <code>batch_summary.json</code> with per file results and aggregate counts.</li>
+                <li>Automation friendly workflow for large asset sets.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
-            <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
-            </ul>
+            <h2>How to Run (Windows)</h2>
+            <p class="meta">Recommended Python: 3.10 or 3.11 (OpenUSD builds vary by Python version).</p>
+
+            <pre><code>setup.bat
+run_app.bat</code></pre>
+
+            <p class="meta">
+                Note: <code>pxr</code> is not pure Python; the project keeps requirements minimal because OpenUSD installs vary by platform.
+                If <code>from pxr import Usd</code> fails, confirm you’re using the venv Python and that OpenUSD DLLs are discoverable on PATH.
+            </p>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Demo Samples</h2>
+            <p>
+                The repo includes a demo generator to create sample USD files and textures for testing scans and “missing dependency” scenarios.
+            </p>
+            <pre><code>python tools\make_demos.py</code></pre>
+        </section>
+
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li><code>manifest.json</code> - copied files, src->dst mapping, types/sizes, optional <code>sha256</code>, missing/skipped deps</li>
+                <li><code>report.json</code> - scan results, counts, metadata</li>
+                <li><code>batch_summary.json</code> - per-file status and totals (batch packaging)</li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/usd-inspector-packager" target="_blank">View Source Code -></a>
             </p>
         </section>
 
+        <section>
+            <p><a href="projects.html">Back to Projects</a></p>
+        </section>
     </main>
 
 </body>

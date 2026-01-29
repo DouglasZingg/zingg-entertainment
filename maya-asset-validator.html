@@ -2,96 +2,152 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maya Asset Validator | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
 
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>Maya Asset Validator</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Production style validation tool for Autodesk Maya that scans scenes for common pipeline issues, provides
+                severity ranked results, and offers guided auto fix actions to prepare assets for export and downstream ingestion.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>Maya</span>
+                <span>PySide6 / PySide2</span>
+                <span>Validation and Auto-Fix</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                In game/VFX pipelines, Maya scenes frequently accumulate issues that cause broken exports and downstream failures:
+                naming drift, non zero transforms, bad history, missing textures, invalid geometry, and inconsistent conventions.
+                These problems are often discovered late (during export, lookdev, rigging, or engine ingestion), creating rework and churn.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built a Maya native validator that performs a comprehensive scan across naming, transforms, geometry, and textures.
+                Findings are grouped by severity (ERROR/WARNING/INFO) and presented in a clear UI with targeted "auto-fix" actions.
+                The tool is designed to be fast, repeatable, and usable by both artists and TDs.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Validation Coverage</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li><strong>Naming checks:</strong> duplicate names, invalid characters, naming conventions.</li>
+                <li><strong>Transform checks:</strong> non zero transforms, frozen transforms, pivot expectations (configurable).</li>
+                <li><strong>Geometry checks:</strong> non manifold geometry, lamina faces, bad normals, history issues.</li>
+                <li><strong>Texture checks:</strong> missing file paths, broken connections, common texture pipeline pitfalls.</li>
+            </ul>
+
+            <h3>Severity Based Reporting</h3>
+            <ul>
+                <li>Findings categorized as <strong>ERROR</strong>, <strong>WARNING</strong>, and <strong>INFO</strong>.</li>
+                <li>Errors block a "ready for export" state. Warnings highlight risk. Info provides helpful notes.</li>
+                <li>Designed for fast triage and consistent standards enforcement.</li>
+            </ul>
+
+            <h3>Auto Fix Actions</h3>
+            <ul>
+                <li>Optional auto fix operations for common issues (safe, targeted actions).</li>
+                <li>Fix flows designed to be explicit and auditable (users choose what to fix).</li>
+                <li>Supports iterative "scan -> fix -> rescan" workflow.</li>
+            </ul>
+
+            <h3>UI and Compatibility</h3>
+            <ul>
+                <li>Qt UI designed for Maya: PySide6 (newer Maya) with fallback compatibility for PySide2/PySide.</li>
+                <li>Targets Maya 2020–2026 style environments.</li>
+                <li>Organized modular checks (easy to extend with new rules).</li>
+            </ul>
+
+            <h3>Artist-Friendly Workflow</h3>
+            <ul>
+                <li>Clear issue lists with actionable descriptions.</li>
+                <li>Designed to be usable without deep technical knowledge.</li>
+                <li>Emphasizes predictable standards and export readiness.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
+            <h2>How to Run</h2>
+
+            <h3>Run Inside Maya</h3>
+            <ol>
+                <li>Clone/download the repo.</li>
+                <li>Point Maya’s Python path at the project folder (or add it via a shelf tool).</li>
+                <li>Run the launcher / entry script.</li>
+            </ol>
+
+            <h3>Typical Launch Snippet</h3>
+            <pre><code># In Maya Script Editor (Python)
+import sys
+sys.path.append(r"C:\path\to\maya-asset-validator")
+import main
+main.run()</code></pre>
+
+            <p class="meta">
+                If your repo uses a different entry point (e.g., <code>maya_launcher.py</code>), update the import accordingly.
+            </p>
+        </section>
+
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
+                <li><strong>In app results:</strong> grouped issue lists with severity and descriptions.</li>
+                <li><strong>Auto fix results:</strong> scene modifications applied by selected fixes (non-destructive patterns where possible).</li>
+                <li><strong>Optional reports:</strong> if enabled, export JSON/HTML style summaries for review and tracking.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li>
+                    <strong>Design intent:</strong> A "preflight" validation step for Maya assets that makes pipeline standards visible and repeatable,
+                    with clear severity and optional fixes.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Auto fix operations are intentionally conservative some issues are better flagged for artist review than
+                    silently changed.
+                </li>
+                <li>
+                    <strong>Extensibility:</strong> Checks are modular so studios can add/disable rules or tune severities without rewriting the UI.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/maya-asset-validator" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 

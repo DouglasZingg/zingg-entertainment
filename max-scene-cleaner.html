@@ -2,96 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3ds Max Scene Cleaner | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
 
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>3ds Max Scene Cleaner</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Production style cleanup and validation utility for Autodesk 3ds Max that removes common scene "garbage",
+                normalizes naming/structure, and prepares scenes for export or downstream pipeline ingestion.
             </p>
 
             <div class="project-meta">
-                <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>3ds Max</span>
+                <span>MaxScript / Python</span>
+                <span>Cleanup and Validation</span>
+                <span>Pipeline Tools</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                3ds Max scenes often accumulate pipeline breaking clutter over time like unused layers, hidden helpers, stray nodes,
+                bad naming, non-reset transforms, invalid materials, and heavy/dirty data that bloats files. These issues create
+                export failures, slowdowns, and inconsistent handoffs between departments or studios.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built a "scene cleaner" that runs a repeatable cleanup pass and validation checklist. It identifies and fixes
+                common issues (optionally preview first), reduces scene clutter, and outputs a report so artists/TDs can confirm
+                the scene is ready for export or packaging.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Scene Cleanup</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li>Removes or flags unused/empty layers and unnecessary helper nodes (configurable).</li>
+                <li>Finds and handles hidden/frozen objects that commonly slip into deliveries.</li>
+                <li>Detects "stray" nodes outside expected layer/group structure.</li>
+                <li>Optional cleanup of selection sets, display layers, and other non delivery data (configurable).</li>
+            </ul>
+
+            <h3>Naming and Structure Validation</h3>
+            <ul>
+                <li>Checks naming conventions (invalid characters, duplicates, inconsistent prefixes/suffixes).</li>
+                <li>Supports batch safe renaming strategies (opt-in) to avoid breaking references unexpectedly.</li>
+                <li>Validates basic scene organization rules (layers/groups).</li>
+            </ul>
+
+            <h3>Transform and Geometry Sanity</h3>
+            <ul>
+                <li>Detects objects with non reset transforms / unexpected scale.</li>
+                <li>Flags geometry issues that commonly break exports (degenerate data, invalid modifiers).</li>
+                <li>Optional "prepare for export" operations (reset XForm / collapse stack) as safe, explicit steps.</li>
+            </ul>
+
+            <h3>Materials and External Dependencies</h3>
+            <ul>
+                <li>Detects missing textures / broken file paths (when applicable).</li>
+                <li>Flags material setups that are not export friendly for specific targets.</li>
+                <li>Generates a list of external dependencies for packaging/handoff workflows.</li>
+            </ul>
+
+            <h3>Batch and Reporting</h3>
+            <ul>
+                <li>Runs on a single scene or in batch across a folder of scenes.</li>
+                <li>Produces a severity based report (ERROR/WARNING/INFO) for review.</li>
+                <li>Designed to integrate with pipeline "preflight" stages before export or delivery packaging.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
+            <h2>How to Run</h2>
+
+            <h3>Run in 3ds Max</h3>
+            <ol>
+                <li>Download/clone the repo.</li>
+                <li>Open 3ds Max and run the provided script (MaxScript or Python entry point).</li>
+                <li>Select a scene (or a folder for batch mode) and run the cleanup pass.</li>
+            </ol>
+
+            <h3>Typical Usage</h3>
+            <ol>
+                <li>Load a scene.</li>
+                <li>Run Scan/Validate to review issues.</li>
+                <li>Choose cleanup/fix actions (preview-first if available).</li>
+                <li>Export report and save the cleaned scene copy (recommended: save-as).</li>
+            </ol>
+
+            <p class="meta">
+                Note: If your repo includes a launcher or UI script, link it here (e.g., “Run <code>main.ms</code>” or “Run <code>launch.py</code>”).
+            </p>
+        </section>
+
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
+                <li><strong>Cleaned scene:</strong> updated scene state ready for export (recommend to save as a new file after).</li>
+                <li><strong>Report:</strong> severity based list of issues and actions taken (JSON/HTML/text depending on your implementation).</li>
+                <li><strong>Dependency list (optional):</strong> external files required for packaging/handoff.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li>
+                    <strong>Design intent:</strong> A preflight cleanup step for Max scenes that reduces downstream export failures and normalizes scenes
+                    into predictable, pipeline friendly states.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Some operations (Reset XForm / Collapse Stack / renaming) can affect rigs or references, so they are designed
+                    to be explicit, opt-in actions rather than automatic silent changes.
+                </li>
+                <li>
+                    <strong>Practicality:</strong> Batch and reporting supports "pre-delivery" checks on multiple scenes and makes cleanup outcomes auditable.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/max-scene-cleaner" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 

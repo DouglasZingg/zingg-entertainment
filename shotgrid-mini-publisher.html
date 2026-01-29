@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>ShotGrid Mini Publisher | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flow/PT (ShotGrid) Mini Publisher | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -13,22 +14,23 @@
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
+
         <header class="project-header">
             <h1>Flow/PT (ShotGrid) Mini Publisher</h1>
             <p class="project-subtitle">
-                A standalone PySide6 desktop tool that connects to Autodesk Flow Production Tracking (ShotGrid) to create a Version publish,
-                upload media/files, and generate a local publish folder with a manifest.
+                Standalone PySide6 publisher that creates ShotGrid Versions, optionally uploads media/files,
+                and writes a structured local publish folder with a manifest.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
                 <span>PySide6</span>
-                <span>ShotGrid / Flow PT</span>
+                <span>Flow PT / ShotGrid</span>
                 <span>Pipeline Tools</span>
             </div>
         </header>
@@ -36,51 +38,82 @@
         <section>
             <h2>Problem</h2>
             <p>
-                Publishing to ShotGrid often involves repetitive steps: selecting context (Project/Shot/Task),
-                validating inputs, creating Versions, uploading media, and keeping a clean local publish structure.
+                Publishing work to Flow Production Tracking (ShotGrid) often requires repetitive manual steps like
+                choosing the correct context (Project/Shot/Task), validating inputs, creating a Version,
+                uploading media, and keeping local publish output consistent. Without validation and structure,
+                bad publishes can slip into tracking systems and create downstream confusion.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I built a small "mini publisher that guides users through the publish workflow, blocks publishes on validation errors,
-                and automates Version creation and optional uploads while also writing a local publish folder and <code>manifest.json</code>.
+                I built a lightweight standalone "mini publisher" with a guided workflow. It automates Version creation and optional uploads,
+                while also writing a structured local publish folder and <code>manifest.json</code> for traceability.
             </p>
         </section>
 
         <section>
             <h2>Key Features</h2>
+
+            <h3>Context Selection and Workflow</h3>
             <ul>
-                <li>Connect and browse Project -> Shot -> Task</li>
-                <li>Build a publish request (name/version/comment/files)</li>
-                <li>Validation step (errors block publish)</li>
-                <li>Create a ShotGrid Version linked to Shot and Task</li>
-                <li>Optional thumbnail/movie and file uploads (schema-aware)</li>
-                <li>Create local publish folder structure and write <code>manifest.json</code></li>
-                <li>Optional PublishedFile creation (non-blocking)</li>
-                <li><strong>DRY_RUN demo mode</strong> to test UI/workflow without credentials</li>
+                <li>Connects to Flow PT / ShotGrid and loads available Projects.</li>
+                <li>Browses Project -> Shot -> Task to establish publish context.</li>
+                <li>Guided publish flow designed for repeatable, productionstyle usage.</li>
+            </ul>
+
+            <h3>Validation and Safety</h3>
+            <ul>
+                <li>Prepublish validation step to catch missing or invalid inputs.</li>
+                <li>Validation errors block publishing to prevent bad tracking data.</li>
+                <li>Warnings are shown clearly while allowing a publish when appropriate.</li>
+            </ul>
+
+            <h3>Version Creation and Uploads</h3>
+            <ul>
+                <li>Creates a ShotGrid <strong>Version</strong> linked to the selected Shot and Task.</li>
+                <li>Optional thumbnail upload and optional movie upload.</li>
+                <li>Optional file attachments uploads (schema-aware).</li>
+            </ul>
+
+            <h3>Local Publish Output</h3>
+            <ul>
+                <li>Creates a structured publish folder under a configurable publish root.</li>
+                <li>Writes <code>manifest.json</code> describing publish metadata and files.</li>
+                <li>Designed to mirror "publish drop" conventions used in production pipelines.</li>
+            </ul>
+
+            <h3>Optional PublishedFile Support</h3>
+            <ul>
+                <li>Attempts PublishedFile creation when enabled (optional/nonblocking).</li>
+                <li>Handles local storage/path constraints gracefully without failing the main publish.</li>
+            </ul>
+
+            <h3>Demo Mode (DRY_RUN)</h3>
+            <ul>
+                <li><code>DRY_RUN</code> simulates API actions without requiring credentials.</li>
+                <li>Still generates local publish output to demonstrate end-to-end workflow.</li>
             </ul>
         </section>
 
         <section>
             <h2>How to Run</h2>
-            <h3>Real ShotGrid / Flow PT</h3>
+
+            <h3>Install & Launch</h3>
             <pre><code>python -m venv .venv
 # Windows:
 .venv\Scripts\activate
 pip install -r requirements.txt
 python main.py</code></pre>
 
+            <h3>Environment Config</h3>
             <p class="meta">
-                Configure environment variables in a <code>.env</code> file (URL, script name, API key, publish root).
+                Configure connection + output settings via <code>.env</code> (e.g., URL, script name, API key, publish root).
             </p>
 
-            <h3>Demo Mode (No credentials)</h3>
-            <p>
-                The tool supports a demo workflow that simulates Version creation/uploads while still generating the local publish output.
-            </p>
-            <pre><code># In .env:
+            <h3>Demo Mode</h3>
+            <pre><code># In .env (example)
 DRY_RUN=1
 PUBLISH_ROOT=C:\TEMP\flow_publishes
 
@@ -88,35 +121,41 @@ python main.py</code></pre>
         </section>
 
         <section>
-            <h2>Testing / Walkthrough</h2>
-            <ol>
-                <li>Launch the app -> Connect & Load Projects</li>
-                <li>Select Project, Shot, Task</li>
-                <li>Enter Publish Name and Version</li>
-                <li>Add file(s) -> Validate -> Publish</li>
-                <li>Confirm <code>PUBLISH_ROOT/.../v###/manifest.json</code> exists</li>
-            </ol>
+            <h2>Outputs</h2>
+            <ul>
+                <li><strong>ShotGrid entities:</strong> creates a <code>Version</code>. Optionally uploads thumbnail/movie/files and creates PublishedFile.</li>
+                <li><strong>Local publish folder:</strong> structured output under <code>PUBLISH_ROOT</code>.</li>
+                <li><strong><code>manifest.json</code>:</strong> records publish metadata, file list, and paths for traceability.</li>
+            </ul>
         </section>
 
         <section>
-            <h2>Production Notes</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Schema-aware uploads and optional PublishedFile creation</li>
-                <li>Designed to be usable even without ShotGrid access via DRY_RUN</li>
-                <li>Common issue: local storage/path field constraints in ShotGrid (documented in troubleshooting)</li>
+                <li>
+                    <strong>Design intent:</strong> A minimal, standalone publisher that demonstrates core ShotGrid publish concepts
+                    (context -> validate -> publish -> register -> local drop) without studio specific dependencies.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> PublishedFile creation is optional/non-blocking because ShotGrid storage configuration
+                    varies by studio and can fail on path constraints.
+                </li>
+                <li>
+                    <strong>Practicality:</strong> <code>DRY_RUN</code> enables demo/testing in environments where API credentials or storage mappings aren’t available.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/DouglasZingg/shotgrid-mini-publisher" target="_blank">View Source Code -></a>
+                <a href="https://github.com/DouglasZingg/shotgrid-mini-publisher" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 
-        <section>
-            <p><a href="projects.html">Back to Projects</a></p>
-        </section>
     </main>
 
 </body>

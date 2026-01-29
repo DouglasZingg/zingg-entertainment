@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>USD Inspector & Packager | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -13,22 +14,23 @@
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
+
         <header class="project-header">
             <h1>USD Inspector & Packager</h1>
             <p class="project-subtitle">
-                Standalone pipeline utility for inspecting USD assets and packaging dependencies into a clean, portable drop.
-                Designed to demonstrate OpenUSD (pxr), dependency scanning, validation reporting, and batch packaging.
+                Standalone pipeline utility that scans USD assets for dependency issues and packages resolved dependencies into a clean,
+                portable drop with reports and manifests.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
                 <span>OpenUSD (pxr)</span>
-                <span>Pipeline Tools</span>
+                <span>Pipeline / VFX</span>
                 <span>Batch and Packaging</span>
             </div>
         </header>
@@ -36,16 +38,18 @@
         <section>
             <h2>Problem</h2>
             <p>
-                USD assets frequently depend on external files (sublayers, references, payloads, textures). Missing or broken
-                dependencies cause downstream failures in DCCs, render farms, and engine ingestion.
+                USD assets commonly reference external files (sublayers, references, payloads, textures). When dependencies are missing
+                or paths are brittle, assets fail to load downstream in DCCs, render farms, and engine ingestion often discovered late,
+                after handoff or transfer between machines.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I built a standalone inspector that scans USD files for dependency issues, produces severity-ranked results,
-                and a packager that collects dependencies into a clean folder structure with a detailed manifest.
+                I built a standalone inspector that scans USD files for dependency issues and produces severity ranked results, plus a packager
+                that collects resolved dependencies into a consistent folder structure with a detailed manifest. An optional “portable mode”
+                rewrites paths inside packaged USDs to make the result self contained.
             </p>
         </section>
 
@@ -54,74 +58,92 @@
 
             <h3>Dependency Inspection</h3>
             <ul>
-                <li>Scans USD assets for sublayers, references, payloads, and texture dependencies.</li>
                 <li>Supports <code>.usd</code>, <code>.usda</code>, <code>.usdc</code>, and <code>.usdz</code>.</li>
+                <li>Scans for sublayers, references, payloads, and texture dependencies.</li>
                 <li>Flags missing/unresolved/invalid dependencies with severity (<strong>ERROR</strong>, <strong>WARNING</strong>, <strong>INFO</strong>).</li>
-                <li>Exports structured results to <code>report.json</code>.</li>
+                <li>Exports structured scan results to <code>report.json</code>.</li>
             </ul>
 
-            <h3>Packaging & Portability</h3>
+            <h3>Packaging & Manifests</h3>
             <ul>
-                <li>Packages USD files and resolved dependencies into a clean, organized output folder.</li>
-                <li>Generates <code>manifest.json</code> describing copied files, source paths, destination paths, and metadata.</li>
-                <li>Collision safe copying to prevent overwrites when names conflict.</li>
+                <li>Packages USD files and resolved dependencies into a clean output folder structure.</li>
+                <li>Writes <code>manifest.json</code> with src->dst mapping, file metadata, and missing/skipped dependencies.</li>
+                <li>Collision safe copying to prevent overwrites when file names conflict.</li>
                 <li>Optional SHA-256 hashing for integrity verification.</li>
             </ul>
 
             <h3>Portable Mode</h3>
             <ul>
-                <li>Rewrites asset paths inside packaged USD files to use packaged-relative paths.</li>
-                <li>Produces self contained, portable asset drops suitable for review, vendor handoff, or archival.</li>
+                <li>Rewrites asset paths inside packaged USD files to use packaged relative paths.</li>
+                <li>Produces self contained drops suitable for vendor handoff, review, or archival.</li>
             </ul>
 
             <h3>Batch Processing</h3>
             <ul>
-                <li>Scans and packages entire folders of USD files.</li>
-                <li>Writes <code>batch_summary.json</code> with per file results and aggregate counts.</li>
+                <li>Scans/packages folders of USD assets in one run.</li>
+                <li>Generates <code>batch_summary.json</code> with per file status and aggregate totals.</li>
                 <li>Automation friendly workflow for large asset sets.</li>
+            </ul>
+
+            <h3>Demo & Validation Utilities</h3>
+            <ul>
+                <li>Includes demo/sample generators to validate common dependency scenarios.</li>
+                <li>Useful for testing “missing vs resolved” cases and demonstrating tool behavior.</li>
             </ul>
         </section>
 
         <section>
-            <h2>How to Run (Windows)</h2>
-            <p class="meta">Recommended Python: 3.10 or 3.11 (OpenUSD builds vary by Python version).</p>
+            <h2>How to Run</h2>
 
+            <h3>Quick Start (Windows)</h3>
             <pre><code>setup.bat
 run_app.bat</code></pre>
 
             <p class="meta">
-                Note: <code>pxr</code> is not pure Python; the project keeps requirements minimal because OpenUSD installs vary by platform.
-                If <code>from pxr import Usd</code> fails, confirm you’re using the venv Python and that OpenUSD DLLs are discoverable on PATH.
+                OpenUSD (<code>pxr</code>) is not pure Python and installation varies by platform/Python version. If <code>from pxr import Usd</code> fails,
+                confirm the correct venv Python is being used and that OpenUSD binaries are discoverable (e.g., PATH on Windows).
             </p>
-        </section>
 
-        <section>
-            <h2>Demo Samples</h2>
-            <p>
-                The repo includes a demo generator to create sample USD files and textures for testing scans and “missing dependency” scenarios.
-            </p>
+            <h3>Generate Demo Assets</h3>
             <pre><code>python tools\make_demos.py</code></pre>
         </section>
 
         <section>
             <h2>Outputs</h2>
             <ul>
-                <li><code>manifest.json</code> - copied files, src->dst mapping, types/sizes, optional <code>sha256</code>, missing/skipped deps</li>
-                <li><code>report.json</code> - scan results, counts, metadata</li>
-                <li><code>batch_summary.json</code> - per-file status and totals (batch packaging)</li>
+                <li><strong><code>report.json</code>:</strong> scan results, dependency findings, and severity counts.</li>
+                <li><strong><code>manifest.json</code>:</strong> package contents including src→dst mapping, file metadata, optional <code>sha256</code>, missing/skipped deps.</li>
+                <li><strong><code>batch_summary.json</code>:</strong> per-file results and aggregate counts for batch operations.</li>
+                <li><strong>Packaged folder:</strong> organized output containing USD(s) and collected dependencies.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Design Notes</h2>
+            <ul>
+                <li>
+                    <strong>Design intent:</strong> Offline validation and packaging step that prioritizes portability and downstream reliability
+                    over preserving original authoring directory layouts.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Portable mode improves handoff success but can diverge from an artist’s original path structure.
+                </li>
+                <li>
+                    <strong>Practicality:</strong> Manifests and optional hashing support auditing, review, and automation checks.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/DouglasZingg/usd-inspector-packager" target="_blank">View Source Code -></a>
+                <a href="https://github.com/DouglasZingg/usd-inspector-packager" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 
-        <section>
-            <p><a href="projects.html">Back to Projects</a></p>
-        </section>
     </main>
 
 </body>

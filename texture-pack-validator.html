@@ -2,96 +2,170 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Texture Pack Validator | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
 
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>Texture Pack Validator</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Standalone Python and PySide6 utility for validating game/VFX texture exports (Substance Painter / game ready sets),
+                auto fixing common naming issues, and generating severity based QA reports.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>PySide6</span>
+                <span>Pillow</span>
+                <span>Texture QA</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                Texture deliveries often fail silently because if missing required maps, inconsistent naming, wrong file formats,
+                and nonproduction safe resolutions lead to broken materials, wasted review cycles, and late-stage rework.
+                Teams need a fast, repeatable way to validate texture exports before handoff to Unreal/Unity/VFX pipelines.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built a standalone validator that scans an export folder (or multiple folders in batch), applies profile aware rules
+                (Unreal / Unity / VFX), reports issues by severity (ERROR/WARNING/INFO), and can optionally auto fix naming
+                to match expected conventions. Results can be exported to JSON/HTML for review and tracking.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Profile-Aware Validation</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li>Supports validation profiles for <strong>Unreal</strong>, <strong>Unity</strong>, and <strong>VFX</strong> delivery rules.</li>
+                <li>Required map rules vary by profile (e.g., BaseColor and Normal always required. ORM/individual channels depending on target).</li>
+                <li>Severity based results: <strong>ERROR</strong> (blocks delivery), <strong>WARNING</strong> (needs review), <strong>INFO</strong> (notes).</li>
+            </ul>
+
+            <h3>Required Maps and Naming QA</h3>
+            <ul>
+                <li>Detects missing required maps for an asset set (BaseColor/Normal plus ORM or AO/Roughness/Metallic based on profile).</li>
+                <li>Identifies naming issues that prevent correct map classification (type parsing and version suffix handling).</li>
+                <li>Optional <strong>auto fix naming</strong> to rename files into expected conventions (batch safe option available).</li>
+            </ul>
+
+            <h3>Image Metadata and Format Checks (Pillow)</h3>
+            <ul>
+                <li>Reads resolution and warns on nonpower of two textures (where applicable).</li>
+                <li>Warns/errors on oversized textures based on configured max size thresholds.</li>
+                <li>Validates extension expectations (VFX can allow EXR more broadly).</li>
+                <li>Performs basic channel sanity checks (e.g., expected channel counts).</li>
+            </ul>
+
+            <h3>ORM Packed Texture Validation</h3>
+            <ul>
+                <li>Validates packed ORM textures: must be RGB (3 channels).</li>
+                <li>Warns on unexpected alpha channels.</li>
+                <li>Warns when channels look suspiciously flat/identical (common export mistakes).</li>
+            </ul>
+
+            <h3>Batch Scan and Watch Mode</h3>
+            <ul>
+                <li>Batch scanning across multiple folders with an aggregated summary export.</li>
+                <li>Optional "watch folders" mode to auto rescan on changes (best effort, debounced).</li>
+            </ul>
+
+            <h3>Reporting</h3>
+            <ul>
+                <li>Exports folder reports to <code>report.json</code> and <code>report.html</code>.</li>
+                <li>Exports batch summaries to <code>batch_report.json</code> for pipeline tracking.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
+            <h2>How to Run</h2>
+
+            <h3>Quick Start (Windows CMD)</h3>
+            <pre><code>setup.bat
+python main.py</code></pre>
+
+            <h3>Quick Start (macOS/Linux)</h3>
+            <pre><code>chmod +x setup.sh
+./setup.sh
+python main.py</code></pre>
+
+            <h3>Usage</h3>
+            <ol>
+                <li>Select an export folder (or add multiple folders for batch).</li>
+                <li>Choose Profile (Unreal / Unity / VFX).</li>
+                <li>Scan and review issues by severity.</li>
+                <li>Export JSON/HTML reports for handoff and review.</li>
+            </ol>
+
+            <h3>Tests (Optional)</h3>
+            <pre><code>pip install -r requirements-dev.txt
+pytest -q</code></pre>
+        </section>
+
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
+                <li>
+                    <strong>Per-folder:</strong>
+                    <code>&lt;export_folder&gt;/reports/report.json</code> and <code>&lt;export_folder&gt;/reports/report.html</code>
+                </li>
+                <li>
+                    <strong>Batch:</strong>
+                    <code>&lt;selected_folder or home&gt;/reports/batch_report.json</code>
+                </li>
+                <li>
+                    <strong>Optional:</strong>
+                    renamed files when auto-fix naming is enabled (to align with expected map conventions)
+                </li>
             </ul>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li>
+                    <strong>Design intent:</strong> A practical QA step for texture deliveries with fast feedback, consistent rules,
+                    and exportable reports that fit into real production handoffs.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Auto fix naming is useful but intentionally optional. Renaming files changes source
+                    so it’s gated behind explicit user control (and batch renaming requires opt-in).
+                </li>
+                <li>
+                    <strong>Pipeline fit:</strong> Profiles (Unreal/Unity/VFX) keep rules explicit and avoid “one-size-fits-all” validation that
+                    produces noisy or misleading results.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/texture-pack-validator" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 

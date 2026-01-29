@@ -2,96 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UE Asset Prep Tool | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
 
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>UE Asset Prep Tool</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Unreal Engine editor utility for preparing assets for production, validating static meshes, enforcing import standards,
+                and exporting structured JSON reports to support consistent pipelines and faster iteration.
             </p>
 
             <div class="project-meta">
-                <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>Unreal Engine</span>
+                <span>Editor Utility</span>
+                <span>Validation</span>
+                <span>JSON Reports</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                In Unreal projects, inconsistent imports and asset quality issues (missing collision, bad LOD setups, invalid naming,
+                oversized textures, incorrect folder placement) create gameplay bugs, performance problems, and downstream rework.
+                Teams need a repeatable "preflight" pass inside the editor to validate assets before they hit production content branches.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built an Unreal Editor utility that scans selected assets (or an entire folder), runs a checklist of production style
+                validations (LOD/collision/naming/location rules), presents results in a clear UI, and writes a structured JSON report.
+                The tool is designed to be lightweight, editor native, and suitable for iterative "scan -> fix -> rescan" workflows.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Asset Selection and Scope</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li>Run on selected assets or scan an entire content folder.</li>
+                <li>Targets Static Mesh validation as a core production use-case.</li>
+                <li>Designed to extend to other asset types (textures/materials) as needed.</li>
+            </ul>
+
+            <h3>Static Mesh Validation</h3>
+            <ul>
+                <li><strong>LOD checks:</strong> validates LOD presence and basic configuration expectations.</li>
+                <li><strong>Collision checks:</strong> detects missing collision and flags non compliant setups.</li>
+                <li><strong>Naming rules:</strong> validates naming conventions for asset types/prefixes.</li>
+                <li><strong>Placement rules:</strong> checks folder placement under expected content paths.</li>
+            </ul>
+
+            <h3>Reporting</h3>
+            <ul>
+                <li>Severity based results (<strong>ERROR</strong>/<strong>WARNING</strong>/<strong>INFO</strong>).</li>
+                <li>Exports a structured JSON report for tracking, review, or CI ingestion.</li>
+                <li>Report supports pipeline "proof" for content readiness.</li>
+            </ul>
+
+            <h3>Workflow and UX</h3>
+            <ul>
+                <li>Editor native UI built for fast iteration: scan -> review -> fix -> rescan.</li>
+                <li>Designed to reduce context switching (fix issues inside the editor).</li>
+                <li>Clear output messaging for artists and technical users.</li>
+            </ul>
+
+            <h3>Configurable Rules (Pipeline-Friendly)</h3>
+            <ul>
+                <li>Rules can be tuned perproject (naming, folder paths, validation thresholds).</li>
+                <li>Supports consistency across teams by keeping standards explicit.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
+            <h2>How to Run</h2>
+
+            <h3>Install</h3>
+            <ol>
+                <li>Clone/download the repo.</li>
+                <li>Copy the tool into your project (commonly into <code>Content/Editor</code> or a <code>Plugins</code> folder depending on implementation).</li>
+                <li>Open the project in Unreal Engine.</li>
+            </ol>
+
+            <h3>Launch</h3>
+            <ol>
+                <li>Open the Editor Utility Widget (or tool entry point provided by the project).</li>
+                <li>Select a folder or assets to scan.</li>
+                <li>Run validation and review results.</li>
+                <li>Export JSON report if needed.</li>
+            </ol>
+
+            <p class="meta">
+                Note: If your repo provides a specific Editor Utility Widget name/path or plugin module name,
+                replace the generic install/launch steps above with the exact instructions.
+            </p>
+        </section>
+
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
+                <li><strong>In editor results:</strong> list of assets with issues grouped by severity.</li>
+                <li><strong>JSON report:</strong> exported file containing per asset validation results and summary counts.</li>
+                <li><strong>Optional:</strong> logs suitable for debugging validation rules and thresholds.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li>
+                    <strong>Design intent:</strong> An editor native "asset preflight" tool that helps teams enforce content standards early,
+                    improving performance stability and reducing downstream rework.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Rules must remain configurable hard coded validation becomes noisy or incorrect across different projects,
+                    so the tool is designed to be tuned per studio/project.
+                </li>
+                <li>
+                    <strong>Pipeline fit:</strong> JSON reporting supports asset QA signoff, content review, and future automation/CI checks.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/ue-asset-prep-tool" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 

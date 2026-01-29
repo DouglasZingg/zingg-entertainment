@@ -2,96 +2,170 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Studio Folder Builder | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
 
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>Studio Folder Builder (Template Generator)</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Standalone Python and PySide6 tool that generates a studio style project folder structures from configurable templates,
+                with preview first planning, safe build, and a reproducible manifest. Optional Flow/PT (ShotGrid) integration.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>PySide6</span>
+                <span>Templates</span>
+                <span>Flow/PT Optional</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                New shows and projects often start with inconsistent folder layouts.That inconsistency wastes time, breaks automation, and makes onboarding harder.
+                Teams need a repeatable way to generate a clean “studio standard” folder tree for shots and assets without risking
+                accidental filesystem damage.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built a template driven folder generator with a "Preview Plan -> Build" workflow. Users choose a root, template, and
+                project name, then define either sequences/shots or asset categories/assets. The tool previews exactly what will be created,
+                performs a safe build step, and writes a manifest for auditing and reproducibility. Flow/PT integration is optional for
+                studios that want to drive sequences/shots from production tracking.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Template Based Structure</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li>Templates define project level folders and per shot/asset trees.</li>
+                <li>Supports starter files (entries ending in <code>.md</code> / <code>.json</code> are created as files).</li>
+                <li>Templates are editable and live in the repo <code>templates/</code> folder.</li>
+            </ul>
+
+            <h3>Two Production Modes</h3>
+            <ul>
+                <li><strong>Shots Mode:</strong> generates <code>sequences/SQ###/SH###/...</code> style trees.</li>
+                <li><strong>Assets Mode:</strong> generates <code>assets/&lt;category&gt;/&lt;asset&gt;/...</code> style trees.</li>
+            </ul>
+
+            <h3>Preview Plan and Safe Build</h3>
+            <ul>
+                <li>Preview Plan shows exactly what will be created before touching the filesystem.</li>
+                <li>Build step creates folders/files and tracks created, skipped or, errors counts.</li>
+                <li>Designed to reduce risk (preview first, explicit build action).</li>
+            </ul>
+
+            <h3>Reproducibility</h3>
+            <ul>
+                <li>Save/Load job configs to rerun identical builds later (reproducible project setup).</li>
+                <li>Manifest output provides an audit trail of what was created and what was skipped.</li>
+            </ul>
+
+            <h3>Optional Flow/PT (ShotGrid) Integration</h3>
+            <ul>
+                <li>Optional dependency set for connecting to Flow/PT and loading sequences/shots.</li>
+                <li>Uses a local <code>flow_config.json</code> (gitignored) for credentials and project ID.</li>
+                <li>Supports studios with custom fields (troubleshooting guidance included in repo docs).</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
+            <h2>How to Run</h2>
+
+            <h3>Quick Start (Windows)</h3>
+            <pre><code>setup.bat
+run_app.bat</code></pre>
+
+            <h3>Manual Setup (Windows)</h3>
+            <pre><code>python -m venv .venv
+.venv\Scripts\activate
+
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+python -m pytest -q
+python main.py</code></pre>
+
+            <h3>Optional: Enable Flow/PT Integration</h3>
+            <pre><code>.venv\Scripts\activate
+pip install -r requirements-flow.txt</code></pre>
+
+            <p class="meta">
+                Then copy <code>flow_config.example.json</code> to <code>flow_config.json</code> and fill in your URL/script credentials/project ID.
+                (Do not commit <code>flow_config.json</code> — it contains secrets.)
+            </p>
+
+            <h3>Usage</h3>
+            <ol>
+                <li>Select a Root directory (example: <code>D:\shows</code>).</li>
+                <li>Select a Template and enter a Project name.</li>
+                <li>Choose <strong>Shots Mode</strong> or <strong>Assets Mode</strong>.</li>
+                <li>Click <strong>Preview Plan</strong> -> verify output -> click <strong>Build</strong>.</li>
+                <li>Optionally Save Config to rerun the same job later.</li>
+            </ol>
+        </section>
+         
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
+                <li><strong>Folder tree:</strong> project/shot/asset structure created under your selected root.</li>
+                <li>
+                    <strong><code>manifest.json</code>:</strong> written after Build (includes template name/version, timestamp, counts,
+                    and per item outcomes).
+                </li>
+                <li>
+                    <strong>Job config (optional):</strong> saved via Save Config / Load Config for reproducible builds.
+                </li>
             </ul>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li>
+                    <strong>Design intent:</strong> Create studio consistent folder structures with a preview first workflow, minimizing risk
+                    while maximizing reproducibility.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Templates are intentionally explicit (not “auto inferred”) so studios can enforce structure,
+                    even if that means more up front template authoring.
+                </li>
+                <li>
+                    <strong>Practicality:</strong> Flow/PT integration is optional to keep the tool usable for anyone without credentials, while still
+                    demonstrating production tracking integration when available.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/studio-folder-builder" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 

@@ -2,96 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Tormented Souls | Douglas Zingg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pipeline Delivery Packager | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="./" class="logo">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main class="project-detail">
 
         <header class="project-header">
-            <h1> Pipeline Validation Tool</h1>
+            <h1>Pipeline Delivery Packager</h1>
             <p class="project-subtitle">
-                Automated validation and reporting tool for game/VFX assets before engine import.
+                Standalone packaging utility that builds clean delivery drops from a source folder,
+                validates required structure, generates a manifest, and optionally hashes files for integrity checks.
+                Designed to mirror real "vendor delivery/handoff" workflows in game & VFX pipelines.
             </p>
 
             <div class="project-meta">
                 <span>Python</span>
-                <span>C++</span>
-                <span>Pipeline / VFX</span>
+                <span>Packaging</span>
+                <span>Manifest and Hash</span>
+                <span>Pipeline Tools</span>
             </div>
         </header>
 
         <section>
-            <h2>Overview</h2>
-            <p>
-                This tool was built to catch common asset issues early in the pipeline,
-                reducing downstream errors and minimizing manual QA work for artists
-                and technical staff.
-            </p>
-        </section>
-
-        <section>
             <h2>Problem</h2>
             <p>
-                In production environments, asset inconsistencies (naming, scale,
-                missing metadata) often surface late in the pipeline, causing rework
-                and blocking downstream tasks.
+                Deliveries often fail for avoidable reasons. Without a manifest and integrity checks, handoffs are hard to audit and
+                issues are discovered late after transfers, uploads, or vendor integration.
             </p>
         </section>
 
         <section>
             <h2>Solution</h2>
             <p>
-                I implemented a command-line validation tool that analyzes assets
-                before engine import, generates structured reports, and integrates
-                cleanly into existing build and automation workflows.
+                I built a standalone "delivery packager" that validates a source folder against expected delivery rules, plans a copy,
+                then builds an output package with a structured folder layout and a detailed <code>manifest.json</code>. Optional hashing
+                provides integrity verification and supports "trust but verify" handoffs.
             </p>
         </section>
 
         <section>
-            <h2>Technical Details</h2>
+            <h2>Key Features</h2>
+
+            <h3>Planning and Validation</h3>
             <ul>
-                <li>Python-based validation layer for rapid iteration</li>
-                <li>C++ components for performance-sensitive checks</li>
-                <li>Config-driven rules to support multiple projects</li>
-                <li>CLI interface suitable for CI integration</li>
+                <li>Validates required folders/files before packaging (errors block output).</li>
+                <li>Separates validation results into <strong>ERROR</strong> vs <strong>WARNING</strong> for clear triage.</li>
+                <li>Preview/plan step to show what will be copied and where (safe “no surprises” workflow).</li>
+            </ul>
+
+            <h3>Packaging and Structure</h3>
+            <ul>
+                <li>Builds a clean output delivery folder with consistent structure.</li>
+                <li>Category routing (organizes files into expected destinations based on rules).</li>
+                <li>Collision handling to avoid accidental overwrites.</li>
+                <li>Supports "skip existing" vs "overwrite" behavior (user-controlled).</li>
+            </ul>
+
+            <h3>Manifest an Integrity</h3>
+            <ul>
+                <li>Generates <code>manifest.json</code> describing all packaged files (src->dst mapping, sizes, timestamps).</li>
+                <li>Optional file hashing (e.g., SHA-256) written into the manifest for integrity checks.</li>
+                <li>Detects mismatches between expected and actual content (helps catch bad handoffs early).</li>
+            </ul>
+
+            <h3>Batch Friendly</h3>
+            <ul>
+                <li>Designed to run consistently for repeated deliveries (predictable output).</li>
+                <li>Clear logs and structured outputs suitable for CI or pipeline integration.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Challenges & Tradeoffs</h2>
+            <h2>How to Run</h2>
+
+            <h3>Quick Start</h3>
+            <pre><code>python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+pip install -r requirements.txt
+python main.py</code></pre>
+
+            <h3>Usage</h3>
+            <ol>
+                <li>Select or enter a source folder (the work you want to deliver).</li>
+                <li>Select an output destination (delivery root).</li>
+                <li>Run validation and review errors/warnings.</li>
+                <li>Preview the plan (optional but recommended).</li>
+                <li>Package and verify output and manifest.</li>
+            </ol>
+
+            <h3>Tests (Optional)</h3>
+            <pre><code>pip install -r requirements-dev.txt
+pytest -q</code></pre>
+        </section>
+
+        <section>
+            <h2>Outputs</h2>
             <ul>
-                <li>Balancing strict validation with artist flexibility</li>
-                <li>Handling incomplete or malformed asset data gracefully</li>
-                <li>Designing extensible validation rules without overengineering</li>
+                <li><strong>Delivery folder:</strong> a clean packaged output with organized structure.</li>
+                <li><strong><code>manifest.json</code>:</strong> file inventory with src→dst mapping, metadata, and optional hashes.</li>
+                <li><strong>Logs:</strong> validation and packaging results suitable for review or automation.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Results</h2>
+            <h2>Design Notes</h2>
             <ul>
-                <li>Earlier detection of asset issues</li>
-                <li>Reduced manual QA time</li>
-                <li>Improved consistency across projects</li>
+                <li>
+                    <strong>Design intent:</strong> Provide a repeatable, auditable delivery step that catches packaging problems early and produces
+                    predictable, studio friendly handoff outputs.
+                </li>
+                <li>
+                    <strong>Tradeoff:</strong> Strict validation reduces surprise failures downstream, but requires clear rules and sometimes blocks delivery
+                    until issues are resolved.
+                </li>
+                <li>
+                    <strong>Practicality:</strong> The manifest and hashing supports "what changed?" and "did transfer corrupt anything?" questions during review.
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/yourname/pipeline-validator" target="_blank">
-                    View Source Code 
-                </a>
+                <a href="https://github.com/DouglasZingg/pipeline-delivery-packager" target="_blank" rel="noopener">View Repo</a>
+            </p>
+            <p>
+                <a href="projects.html">Back to Projects</a>
             </p>
         </section>
 

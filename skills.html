@@ -2,66 +2,95 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Skills | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <header class="site-header">
-        <nav>
-            <a href="index.html" class="logo">DZ</a>
-            <div class="nav-links">
-                <a href="projects.html">Projects</a>
-                <a href="skills.html">Skills</a>
-                <a href="about.html">About</a>
-                <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+    <nav>
+        <a href="index.html" class="logo">DZ</a>
+        <div class="nav-links">
+            <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="about.html">About</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="skills-page">
+
+        <section>
+            <h1>Skills</h1>
+            <p class="lead">
+                I build production tools and pipeline systems that support both game and VFX workflows that focuse on validation,
+                automation, and reliable handoffs.
+            </p>
+        </section>
+
+        <section>
+            <h2>Core Programming</h2>
+            <ul>
+                <li><strong>Python</strong> - pipeline tools, validation, packaging, automation, reporting</li>
+                <li><strong>C#</strong> - game tools and editor workflows</li>
+                <li><strong>C++</strong> - systems/engine fundamentals and performance aware coding</li>
+                <li><strong>JavaScript</strong> - lightweight tools, UI scripting, web dashboards/portfolio</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Game Development Tooling</h2>
+            <ul>
+                <li><strong>Unreal Engine</strong> - Editor Utility workflows, asset validation, JSON reporting</li>
+                <li><strong>Unity</strong> - C# gameplay/editor foundations and team project experience</li>
+                <li><strong>Asset standards</strong> - naming, folder conventions, LOD/collision expectations, export readiness</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>VFX / Pipeline Tooling</h2>
+            <ul>
+                <li><strong>Maya</strong> - scene validation and asset preflight tooling</li>
+                <li><strong>3ds Max</strong> - scene cleanup and batch-oriented prep concepts</li>
+                <li><strong>Flow Production Tracking (ShotGrid)</strong> - publishing workflows, Version creation, uploads</li>
+                <li><strong>OpenUSD (pxr)</strong> - dependency inspection, packaging, portable asset handoffs</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Pipeline Patterns I Use</h2>
+            <ul>
+                <li><strong>Preflight validation</strong> - scan -> severity results (ERROR/WARNING/INFO) -> fix guidance</li>
+                <li><strong>Packaging and delivery</strong> - manifests, collision safe copies, optional hashing</li>
+                <li><strong>Batch operations</strong> - folder level processing and summary outputs</li>
+                <li><strong>Structured reporting</strong> - JSON/HTML outputs designed for review and automation</li>
+                <li><strong>Artist friendly UX</strong> - clear feedback, predictable behavior, minimal friction</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Frameworks & Libraries</h2>
+            <ul>
+                <li><strong>PySide6 / PySide2 (Qt)</strong> - desktop tools and DCC-integrated UIs</li>
+                <li><strong>Pillow</strong> - image/texture inspection and metadata validation</li>
+                <li><strong>Git</strong> - version control and collaborative iteration</li>
+            </ul>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-left">© <span id="year"></span> Douglas Zingg</div>
+            <div class="footer-right">
+                <a href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">Skills PDF</a>
+                <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
             </div>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h1>Technical Skills</h1>
-
-        <section>
-            <h2>Programming Languages</h2>
-            <ul>
-                <li><strong>C++</strong> — Engine-level systems, performance-critical code</li>
-                <li><strong>C#</strong> — Unity tools, editor extensions, gameplay systems</li>
-                <li><strong>Python</strong> — Pipeline automation, validation tools, scripting</li>
-                <li><strong>JavaScript</strong> — Web dashboards, tooling UIs</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Game & VFX Tooling</h2>
-            <ul>
-                <li>Asset pipelines & validation</li>
-                <li>Editor tools & workflow automation</li>
-                <li>Build & CI integration</li>
-                <li>Cross-department tooling (art, tech, production)</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Technologies & Tools</h2>
-            <ul>
-                <li>Git / version control workflows</li>
-                <li>Unity Engine</li>
-                <li>CI systems & build automation</li>
-                <li>Web tooling (HTML, CSS, JS)</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Working Style</h2>
-            <ul>
-                <li>Production-focused problem solving</li>
-                <li>Readable, maintainable code</li>
-                <li>Documentation-driven development</li>
-                <li>Comfortable supporting non-programmers</li>
-            </ul>
-        </section>
+        </footer>
     </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>

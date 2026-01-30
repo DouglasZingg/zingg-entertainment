@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Douglas Zingg | Tools & Pipeline Developer</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -13,7 +14,7 @@
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
@@ -21,15 +22,40 @@
         <section class="hero">
             <h1>Tools & Pipeline Developer</h1>
             <p>
-                I build production focused tools and systems for game and VFX pipelines.
+                I build production-focused tools and systems for game and VFX pipelines.
                 My work focuses on reliability, automation, and developer ergonomics.
             </p>
 
+            <div class="hero-cta">
+                <a class="btn primary" href="projects.html">View Projects</a>
+                <!-- Put the PDF in /assets/ and link it here -->
+                <a class="btn" href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">
+                    Skills Matrix (PDF)
+                </a>
+            </div>
+        </section>
 
+        <section class="value-strip">
+            <div class="value-card">
+                <h3>Validation & Preflight</h3>
+                <p>Catch issues early with clear severity results and actionable fixes.</p>
+            </div>
+            <div class="value-card">
+                <h3>Publishing & Tracking</h3>
+                <p>Publish workflows tied to production systems like Flow/PT (ShotGrid).</p>
+            </div>
+            <div class="value-card">
+                <h3>Packaging & Handoff</h3>
+                <p>Manifest-driven delivery drops designed for portability and auditability.</p>
+            </div>
         </section>
 
         <section>
-            <h2>Featured Projects</h2>
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p class="section-subtitle">Filter by language to quickly find relevant work.</p>
+            </div>
+
             <div class="filters">
                 <button data-tech="all">All</button>
                 <button data-tech="C++">C++</button>
@@ -37,10 +63,23 @@
                 <button data-tech="Python">Python</button>
                 <button data-tech="JavaScript">JavaScript</button>
             </div>
+
             <div id="featured-projects"></div>
         </section>
+
+        <footer class="site-footer">
+            <div class="footer-left">© <span id="year"></span> Douglas Zingg</div>
+            <div class="footer-right">
+                <a href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">Skills PDF</a>
+                <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
     </main>
+
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>About | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -13,54 +14,67 @@
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
-            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+            <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
-    <main>
-        <h1>About Me</h1>
+    <main class="about-page">
 
-        <section class="about-section">
-            <p>
-                I’m a tools and pipeline-focused developer with experience in game development
-                and technical systems. I enjoy building reliable tools and automation that
-                support production workflows, reduce manual work, and scale across teams.
-            </p>
-
-            <p>
-                My work often sits at the intersection of engineering and content creation.
-                I’ve built editor tools, pipeline utilities, and workflow automation using
-                C++, C#, Python, and JavaScript, with a strong emphasis on maintainability
-                and real-world production constraints.
-            </p>
-
-            <p>
-                I value clear communication and collaboration across disciplines, and I enjoy
-                working closely with artists, designers, and engineers to turn complex or
-                ambiguous requirements into practical, usable tools.
+        <section>
+            <h1>About Me</h1>
+            <p class="lead">
+                I’m a tools and pipeline focused developer with a background in game development,
+                focused on building reliable systems that support artists and production teams.
             </p>
         </section>
 
-        <section class="about-section">
-            <h2>Technical Focus</h2>
+        <section>
+            <p>
+                I studied game development at Full Sail University and worked on multiple team based projects,
+                including graphics programming and full game production. Through that work, I gravitated toward
+                the technical side of production, building tools that validate assets, automate repetitive steps,
+                and reduce downstream pipeline issues.
+            </p>
+
+            <p>
+                My portfolio reflects that focus: asset validators, publishers, packagers, editor utilities,
+                and workflow tools designed around real production problems rather than isolated demos.
+            </p>
+        </section>
+
+        <section>
+            <h2>How I Approach Tools</h2>
             <ul>
-                <li><strong>C++:</strong> Engine-level systems, performance-sensitive tooling</li>
-                <li><strong>C#:</strong> Game and editor tooling, Unity-based workflows</li>
-                <li><strong>Python:</strong> Pipeline automation, validation, scripting</li>
-                <li><strong>JavaScript:</strong> Internal tools, dashboards, web-based UIs</li>
+                <li>Catch problems early with validation and clear feedback</li>
+                <li>Make pipeline standards explicit and repeatable</li>
+                <li>Favor predictable behavior over one off scripts</li>
+                <li>Design tools that fit naturally into existing workflows</li>
             </ul>
         </section>
 
-        <section class="about-section">
-            <h2>What I’m Interested In</h2>
-            <ul>
-                <li>Tools and pipeline development</li>
-                <li>Editor extensions and workflow automation</li>
-                <li>Improving production reliability and iteration speed</li>
-                <li>Supporting artists and developers through better tooling</li>
-            </ul>
+        <section>
+            <h2>What I’m Looking For</h2>
+            <p>
+                I’m seeking tools, pipeline, or technical roles at game or VFX studios, particularly in
+                Vancouver, where I can contribute to production ready systems and collaborate closely
+                with artists and engineers.
+            </p>
         </section>
+
+        <footer class="site-footer">
+            <div class="footer-left">© <span id="year"></span> Douglas Zingg</div>
+            <div class="footer-right">
+                <a href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">Skills PDF</a>
+                <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
     </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>

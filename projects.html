@@ -18,20 +18,33 @@
     </nav>
 
     <main>
-        <h1>Projects</h1>
+        <section>
+            <h1>Projects</h1>
 
-        <div class="filters">
-            <button data-tech="all">All</button>
-            <button data-tech="C++">C++</button>
-            <button data-tech="C#">C#</button>
-            <button data-tech="Python">Python</button>
-            <button data-tech="JavaScript">JavaScript</button>
-        </div>
+            <div class="filters">
+                <button data-tech="all">All</button>
+                <button data-tech="C++">C++</button>
+                <button data-tech="C#">C#</button>
+                <button data-tech="Python">Python</button>
+                <button data-tech="JavaScript">JavaScript</button>
+            </div>
 
-        <div id="project-list"></div>
+            <div id="project-list"></div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-left">© <span id="year"></span> Douglas Zingg</div>
+            <div class="footer-right">
+                <a href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">Skills PDF</a>
+                <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
     </main>
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

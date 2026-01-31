@@ -1,65 +1,65 @@
-﻿body {
-    margin: 0;
-    font-family: Inter, Arial, sans-serif;
-    background: #0f0f0f;
-    color: #e6e6e6;
+body {
+margin: 0;
+font-family: Inter, Arial, sans-serif;
+background: #0f0f0f;
+color: #e6e6e6;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 32px;
-    border-bottom: 1px solid #2a2a2a;
+display: flex;
+justify-content: space-between;
+padding: 16px 32px;
+border-bottom: 1px solid #2a2a2a;
 }
 
-    nav a {
+nav a {
         color: #e6e6e6;
         margin-left: 16px;
         text-decoration: none;
     }
 
 .logo {
-    font-family: "JetBrains Mono", monospace;
-    font-weight: bold;
+font-family: "JetBrains Mono", monospace;
+font-weight: bold;
 }
 
 main {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
+max-width: 900px;
+margin: auto;
+padding: 40px 20px;
 }
 
 .hero h1 {
-    font-size: 2.2rem;
+font-size: 2.2rem;
 }
 
 .tech-tags span {
-    display: inline-block;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    padding: 6px 10px;
-    margin-right: 8px;
-    margin-top: 8px;
-    font-family: "JetBrains Mono", monospace;
+display: inline-block;
+background: #1a1a1a;
+border: 1px solid #2a2a2a;
+padding: 6px 10px;
+margin-right: 8px;
+margin-top: 8px;
+font-family: "JetBrains Mono", monospace;
 }
 
 .project-card {
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    padding: 16px;
-    margin-top: 16px;
+background: #1a1a1a;
+border: 1px solid #2a2a2a;
+padding: 16px;
+margin-top: 16px;
 }
 
-    .project-card .meta {
+.project-card .meta {
         opacity: 0.7;
         font-size: 0.9rem;
     }
 
 .filters {
-    margin: 20px 0;
+margin: 20px 0;
 }
 
-    .filters button {
+.filters button {
         background: #1a1a1a;
         border: 1px solid #2a2a2a;
         color: #e6e6e6;
@@ -73,150 +73,150 @@ main {
         }
 
 .about-section {
-    margin-top: 32px;
-    max-width: 800px;
+margin-top: 32px;
+max-width: 800px;
 }
 
-    .about-section h2 {
+.about-section h2 {
         margin-bottom: 8px;
     }
 
-    .about-section ul {
+.about-section ul {
         padding-left: 20px;
     }
 
-    .about-section li {
+.about-section li {
         margin-bottom: 6px;
     }
 
 .project-detail {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
+max-width: 900px;
+margin: auto;
+padding: 40px 20px;
 }
 
 .project-header {
-    margin-bottom: 32px;
+margin-bottom: 32px;
 }
 
 .project-subtitle {
-    opacity: 0.8;
-    margin-top: 8px;
+opacity: 0.8;
+margin-top: 8px;
 }
 
 .project-meta span {
-    display: inline-block;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    padding: 4px 10px;
-    margin-right: 8px;
-    margin-top: 8px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.85rem;
+display: inline-block;
+background: #1a1a1a;
+border: 1px solid #2a2a2a;
+padding: 4px 10px;
+margin-right: 8px;
+margin-top: 8px;
+font-family: "JetBrains Mono", monospace;
+font-size: 0.85rem;
 }
 
 .project-detail section {
-    margin-top: 32px;
+margin-top: 32px;
 }
 
 .project-detail h2 {
-    margin-bottom: 8px;
+margin-bottom: 8px;
 }
 
 section {
-    margin-top: 2.5rem;
-    max-width: 800px;
+margin-top: 2.5rem;
+max-width: 800px;
 }
 
-    section h2 {
+section h2 {
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
         color: #ffffff;
     }
 
-    section p,
-    section li {
+section p,
+section li {
         color: #bdbdbd;
         line-height: 1.6;
     }
 
-    section ul {
+section ul {
         padding-left: 1.2rem;
     }
 
 pre {
-    background: #0f0f0f;
-    border-radius: 6px;
-    padding: 1rem;
-    overflow-x: auto;
-    margin-top: 1rem;
+background: #0f0f0f;
+border-radius: 6px;
+padding: 1rem;
+overflow-x: auto;
+margin-top: 1rem;
 }
 
 code {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.85rem;
-    color: #e6e6e6;
+font-family: "JetBrains Mono", monospace;
+font-size: 0.85rem;
+color: #e6e6e6;
 }
 
 /* --- Homepage polish --- */
 
 .hero {
-    margin-top: 10px;
+margin-top: 10px;
 }
 
-    .hero h1 {
+.hero h1 {
         font-size: 2.6rem;
         letter-spacing: -0.6px;
         margin: 0 0 10px 0;
     }
 
-    .hero p {
+.hero p {
         max-width: 70ch;
         margin: 0;
     }
 
 .hero-cta {
-    display: flex;
-    gap: 12px;
-    margin-top: 18px;
-    flex-wrap: wrap;
+display: flex;
+gap: 12px;
+margin-top: 18px;
+flex-wrap: wrap;
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1px solid #2a2a2a;
-    background: #141414;
-    color: #e6e6e6;
-    text-decoration: none;
+display: inline-block;
+padding: 10px 14px;
+border-radius: 10px;
+border: 1px solid #2a2a2a;
+background: #141414;
+color: #e6e6e6;
+text-decoration: none;
 }
 
-    .btn:hover {
+.btn:hover {
         border-color: #3a3a3a;
     }
 
-    .btn.primary {
+.btn.primary {
         border-color: #3a3a3a;
         background: #1a1a1a;
     }
 
 .value-strip {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 24px;
-    max-width: 900px;
+display: grid;
+gap: 12px;
+grid-template-columns: repeat(3, 1fr);
+margin-top: 24px;
+max-width: 900px;
 }
 
 .value-card {
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 14px;
-    padding: 14px;
+background: #1a1a1a;
+border: 1px solid #2a2a2a;
+border-radius: 14px;
+padding: 14px;
 }
 
-    .value-card h3 {
+.value-card h3 {
         margin: 0 0 8px 0;
         font-size: 0.85rem;
         letter-spacing: 0.5px;
@@ -224,57 +224,57 @@ code {
         opacity: 0.9;
     }
 
-    .value-card p {
+.value-card p {
         margin: 0;
         color: #bdbdbd;
         line-height: 1.6;
     }
 
 .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
+display: flex;
+align-items: baseline;
+justify-content: space-between;
+gap: 12px;
 }
 
 .section-subtitle {
-    margin: 0;
-    color: #9d9d9d;
-    font-size: 0.95rem;
+margin: 0;
+color: #9d9d9d;
+font-size: 0.95rem;
 }
 
 /* Make featured projects a grid */
 #featured-projects {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 16px;
+display: grid;
+gap: 12px;
+grid-template-columns: repeat(2, 1fr);
+margin-top: 16px;
 }
 
 /* Upgrade cards slightly */
 .project-card {
-    border-radius: 14px;
-    transition: transform 120ms ease, border-color 120ms ease;
+border-radius: 14px;
+transition: transform 120ms ease, border-color 120ms ease;
 }
 
-    .project-card:hover {
+.project-card:hover {
         transform: translateY(-2px);
         border-color: #3a3a3a;
     }
 
 /* Footer */
 .site-footer {
-    border-top: 1px solid #2a2a2a;
-    margin-top: 44px;
-    padding-top: 18px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-    color: #9d9d9d;
+border-top: 1px solid #2a2a2a;
+margin-top: 44px;
+padding-top: 18px;
+display: flex;
+justify-content: space-between;
+gap: 12px;
+flex-wrap: wrap;
+color: #9d9d9d;
 }
 
-    .site-footer a {
+.site-footer a {
         color: #9d9d9d;
         text-decoration: none;
         margin-left: 12px;
@@ -286,48 +286,48 @@ code {
 
 /* Responsive */
 @media (max-width: 860px) {
-    .value-strip {
+.value-strip {
         grid-template-columns: 1fr;
     }
 
-    #featured-projects {
+#featured-projects {
         grid-template-columns: 1fr;
     }
 
-    .section-header {
+.section-header {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .hero h1 {
+.hero h1 {
         font-size: 2.1rem;
     }
 }
 
 /* Project card enhancements */
 .chip-row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 10px;
+display: flex;
+gap: 6px;
+flex-wrap: wrap;
+margin-top: 10px;
 }
 
 .chip {
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 999px;
-    border: 1px solid #2a2a2a;
-    background: #141414;
-    opacity: 0.9;
+font-size: 12px;
+padding: 4px 8px;
+border-radius: 999px;
+border: 1px solid #2a2a2a;
+background: #141414;
+opacity: 0.9;
 }
 
 .card-actions {
-    margin-top: 12px;
-    display: flex;
-    gap: 14px;
+margin-top: 12px;
+display: flex;
+gap: 14px;
 }
 
-    .card-actions a {
+.card-actions a {
         text-decoration: none;
         font-size: 14px;
         color: #cfcfcf;
@@ -339,6 +339,123 @@ code {
 
 /* Filter button active state */
 .filters button.active {
-    border-color: #3a3a3a;
-    background: #1a1a1a;
+border-color: #3a3a3a;
+background: #1a1a1a;
 }
+
+.count-line {
+grid-column: 1 / -1;
+margin-top: 6px;
+opacity: 0.75;
+font-size: 0.95rem;
+}
+
+.tag-row {
+margin-bottom: 10px;
+}
+
+.tag {
+font-size: 11px;
+padding: 3px 8px;
+border-radius: 999px;
+border: 1px solid #2a2a2a;
+background: #111;
+opacity: 0.85;
+}
+
+.primary-link {
+font-weight: 600;
+}
+
+.chip-domain {
+border-color: #3a3a3a;
+background: #101010;
+opacity: 0.95;
+}
+
+.filter-bar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+flex-wrap: wrap; /* allows clean wrap on small screens */
+margin-top: 10px;
+}
+
+.filter-bar .count {
+        margin: 0; /* removes extra vertical spacing */
+        opacity: 0.75;
+        white-space: nowrap; /* keeps "12 projects" on one line */
+    }
+
+.filter-bar .filters {
+        margin: 0; /* if your .filters had margin */
+    }
+
+.feature-list {
+margin-left: 18px;
+margin-bottom: 16px;
+}
+
+.feature-list li {
+        margin-bottom: 6px;
+        line-height: 1.6;
+        color: #cfcfcf;
+    }
+
+
+/* Feature groups (Key Features sections) */
+.feature-group {
+  margin-left: 18px;
+  margin-bottom: 18px;
+  border-left: 2px solid #2a2a2a;
+  padding-left: 16px;
+}
+
+.feature-group h3 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.feature-group ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.feature-group li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+/* Contact section (About page) */
+.contact-section {
+    margin-top: 32px;
+}
+
+.contact-intro {
+    max-width: 70ch;
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .contact-list li {
+        margin-bottom: 8px;
+    }
+
+    .contact-list a {
+        text-decoration: none;
+        color: #cfcfcf;
+    }
+
+        .contact-list a:hover {
+            color: #ffffff;
+        }

@@ -1,116 +1,124 @@
 const featuredContainer = document.getElementById("featured-projects");
 const projectList = document.getElementById("project-list");
 
-// Home page filter buttons (index.html)
 const homeFilterButtons = document.querySelectorAll("main .filters button");
-
-// Projects page filter buttons (projects.html)
 const filterButtons = document.querySelectorAll("#filters button, .filters button");
 
 function setActiveFilter(buttons, activeBtn) {
-    buttons.forEach(b => b.classList.remove("active"));
-    activeBtn.classList.add("active");
+  buttons.forEach(b => b.classList.remove("active"));
+  activeBtn.classList.add("active");
+}
+
+function setCountText(countEl, count) {
+  if (!countEl) return;
+  countEl.textContent = `${count} project${count !== 1 ? "s" : ""}`;
+}
+
+function asArray(val) {
+  if (Array.isArray(val)) return val;
+  if (typeof val === "string" && val.trim()) return [val.trim()];
+  return [];
 }
 
 function makeProjectCard(project) {
-    const card = document.createElement("div");
-    card.className = "project-card";
+  const card = document.createElement("div");
+  card.className = "project-card";
 
-    const techChips = Array.isArray(project.tech)
-        ? project.tech.map(t => `<span class="chip">${t}</span>`).join("")
-        : "";
+  const title = project?.title || "Untitled Project";
+  const summary = project?.summary || "";
+  const tech = asArray(project?.tech);
+  const domain = project?.domain;
 
-    const detailsLink = project.page
-        ? `<a href="${project.page}">Details</a>`
-        : "";
+  const domainLabel = Array.isArray(domain) ? domain.filter(Boolean).join(" • ") : (domain || "");
+  const domainChip = domainLabel ? `<span class="chip chip-domain">${domainLabel}</span>` : "";
+  const techChips = tech.map(t => `<span class="chip">${t}</span>`).join("");
 
-    const githubLink = project.github
-        ? `<a href="${project.github}" target="_blank" rel="noopener">GitHub</a>`
-        : "";
+  const chipsRow = (domainChip || techChips)
+    ? `<div class="chip-row">${domainChip}${techChips}</div>`
+    : "";
 
-    card.innerHTML = `
-    <h3>${project.title || "Untitled Project"}</h3>
-    <p>${project.summary || ""}</p>
+  const detailsLink = project?.page
+    ? `<a class="primary-link" href="${project.page}">Details</a>`
+    : "";
 
-    <div class="chip-row">
-      ${techChips}
-    </div>
+  const githubLink = project?.github
+    ? `<a href="${project.github}" target="_blank" rel="noopener">GitHub</a>`
+    : "";
 
-    <div class="card-actions">
-      ${detailsLink}
-      ${githubLink}
-    </div>
+  card.innerHTML = `
+    <h3>${title}</h3>
+    ${summary ? `<p>${summary}</p>` : ""}
+    ${chipsRow}
+    ${(detailsLink || githubLink) ? `<div class="card-actions">${detailsLink}${githubLink}</div>` : ""}
   `;
 
-    return card;
+  return card;
 }
 
 function renderFeaturedProjects(techFilter = "all") {
-    if (!featuredContainer) return;
+  if (!featuredContainer) return;
 
-    featuredContainer.innerHTML = "";
+  featuredContainer.innerHTML = "";
 
-    let list = Array.isArray(projects) ? projects.filter(p => p.featured === true) : [];
+  let list = Array.isArray(window.projects) ? window.projects.filter(p => p?.featured === true) : [];
 
-    if (techFilter !== "all") {
-        list = list.filter(p => Array.isArray(p.tech) && p.tech.includes(techFilter));
-    }
+  if (techFilter !== "all") {
+    list = list.filter(p => asArray(p.tech).includes(techFilter));
+  }
 
-    if (list.length === 0) {
-        featuredContainer.innerHTML = `<p class="meta">No featured projects match "${techFilter}".</p>`;
-        return;
-    }
+  const featuredCount = document.getElementById("featured-count");
+  setCountText(featuredCount, list.length);
 
-    list.forEach(project => {
-        featuredContainer.appendChild(makeProjectCard(project));
-    });
+  if (list.length === 0) {
+    featuredContainer.innerHTML = `<p class="meta">No featured projects match "${techFilter}".</p>`;
+    return;
+  }
+
+  list.forEach(project => featuredContainer.appendChild(makeProjectCard(project)));
 }
 
 function renderProjects(filter = "all") {
-    if (!projectList) return;
+  if (!projectList) return;
 
-    projectList.innerHTML = "";
+  projectList.innerHTML = "";
 
-    const allProjects = Array.isArray(projects) ? projects : [];
+  const allProjects = Array.isArray(window.projects) ? window.projects : [];
 
-    const filtered = filter === "all"
-        ? allProjects
-        : allProjects.filter(p => Array.isArray(p.tech) && p.tech.includes(filter));
+  const filtered = (filter === "all")
+    ? allProjects
+    : allProjects.filter(p => asArray(p?.tech).includes(filter));
 
-    if (filtered.length === 0) {
-        projectList.innerHTML = `<p class="meta">No projects match "${filter}".</p>`;
-        return;
-    }
+  const projectCount = document.getElementById("project-count");
+  setCountText(projectCount, filtered.length);
 
-    filtered.forEach(project => {
-        projectList.appendChild(makeProjectCard(project));
-    });
+  if (filtered.length === 0) {
+    projectList.innerHTML = `<p class="meta">No projects match "${filter}".</p>`;
+    return;
+  }
+
+  filtered.forEach(project => projectList.appendChild(makeProjectCard(project)));
 }
 
-// Wire up homepage filters (only if featured container exists)
 if (featuredContainer && homeFilterButtons.length > 0) {
-    homeFilterButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            setActiveFilter(homeFilterButtons, btn);
-            renderFeaturedProjects(btn.dataset.tech || "all");
-        });
+  homeFilterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      setActiveFilter(homeFilterButtons, btn);
+      renderFeaturedProjects(btn.dataset.tech || "all");
     });
+  });
 
-    // Default
-    renderFeaturedProjects("all");
-    homeFilterButtons[0]?.classList.add("active");
+  renderFeaturedProjects("all");
+  homeFilterButtons[0]?.classList.add("active");
 }
 
-// Wire up projects page filters (only if project list exists)
 if (projectList && filterButtons.length > 0) {
-    filterButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            setActiveFilter(filterButtons, btn);
-            renderProjects(btn.dataset.tech || "all");
-        });
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      setActiveFilter(filterButtons, btn);
+      renderProjects(btn.dataset.tech || "all");
     });
+  });
 
-    // Default
-    renderProjects("all");
-    filterButtons[0]?.classList.add("active");
+  renderProjects("all");
+  filterButtons[0]?.classList.add("active");
 }

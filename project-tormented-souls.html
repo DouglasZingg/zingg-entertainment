@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Graphics Engine | Douglas Zingg</title>
+    <title>Tormented Souls | Douglas Zingg</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -18,76 +18,66 @@
     </nav>
 
     <main class="project-detail">
-
         <header class="project-header">
-            <h1>Basic Graphics Engine</h1>
+            <h1>Tormented Souls</h1>
             <p class="project-subtitle">
-                A module graphics engine that diplays a space scene.
+                Midterm game project built with a 5-person team. Focused on shipping a playable build and iterating quickly as a group.
             </p>
 
             <div class="project-meta">
-                <span>C++</span>
-                <span>VFX</span>
+                <span>C#</span>
+                <span>Unity</span>
+                <span>ShaderLab / HLSL</span>
+                <span>Team Project</span>
             </div>
         </header>
 
         <section>
             <h2>Overview</h2>
             <p>
-                This was a project that I was assigned at Full Sail University. The purpose was to make a small graphics engine that displayed certain things
-                that you can pick from a excel sheet. I decided to make a space scene with planets, stars, and a spaceship.
+                Tormented Souls was a midterm team project where we collaborated across roles to deliver a complete playable experience.
+                My focus was on implementing reliable gameplay systems and integrating features cleanly with the rest of the team’s work.
             </p>
         </section>
 
         <section>
-            <h2>What I Built</h2>
+            <h2>My Contributions</h2>
             <ul>
-                <li>Direct3D 11 initialization and render loop scaffold</li>
-                <li>Camera movement and rotation and zoom controls</li>
-                <li>Project structure intended for iterative graphics feature additions</li>
+                <li><strong>Gameplay:</strong> shooting, journal system, player interactions</li>
+                <li><strong>Systems:</strong> UI, looting</li>
+                <li><strong>Integration:</strong> bug fixes, prefab/scene consistency, performance cleanup</li>
             </ul>
         </section>
 
         <section>
-            <h2>Controls</h2>
+            <h2>What We Shipped</h2>
             <ul>
-                <li><strong>WASD</strong> — move camera</li>
-                <li><strong>Arrow keys</strong> — rotate camera</li>
-                <li><strong>Z / X</strong> — zoom in/out</li>
+                <li>Complete playable build</li>
+                <li>Core gameplay loop and win/lose states</li>
+                <li>UI flow (menu -> gameplay -> results)</li>
+                <li>Audio/FX/polish pass</li>
             </ul>
-        </section>
-
-        <section>
-            <h2>Build & Run</h2>
-            <ul>
-                <li>Windows and Visual Studio</li>
-                <li>Windows SDK installed</li>
-                <li>Open solution, build, run</li>
-            </ul>
-            <p class="meta">
-                (This project is Windows-only because D3D11 is a Microsoft API.)
-            </p>
         </section>
 
         <section>
             <h2>Technical Notes</h2>
             <ul>
-                <li>Focus: real time rendering fundamentals and engine style scaffolding</li>
-                <li>Emphasis on clean iteration loops for adding new graphics features</li>
+                <li>Primary implementation in C# (Unity)</li>
+                <li>Shader work present (ShaderLab/HLSL) that was used for visuals/presentation</li>
+                <li>Focused on maintainable, team friendly code organization</li>
             </ul>
         </section>
 
         <section>
             <h2>Links</h2>
             <p>
-                <a href="https://github.com/DouglasZingg/GraphicsProject" target="_blank">View Source Code -></a>
+                <a href="https://github.com/DouglasZingg/TormentedSouls" target="_blank">View Source Code -></a>
             </p>
         </section>
 
         <section>
             <p><a href="projects.html">Back to Projects</a></p>
         </section>
-
         <footer class="site-footer">
             <div class="footer-left">© <span id="year"></span> Douglas Zingg</div>
             <div class="footer-right">

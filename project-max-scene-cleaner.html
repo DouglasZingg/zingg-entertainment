@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,42 +55,47 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Scene Cleanup</h3>
-            <ul>
+<div class="feature-group">
+<h3>Scene Cleanup</h3><ul class="feature-list">
                 <li>Removes or flags unused/empty layers and unnecessary helper nodes (configurable).</li>
                 <li>Finds and handles hidden/frozen objects that commonly slip into deliveries.</li>
                 <li>Detects "stray" nodes outside expected layer/group structure.</li>
                 <li>Optional cleanup of selection sets, display layers, and other non delivery data (configurable).</li>
             </ul>
+</div>
 
-            <h3>Naming and Structure Validation</h3>
-            <ul>
+<div class="feature-group">
+<h3>Naming and Structure Validation</h3><ul class="feature-list">
                 <li>Checks naming conventions (invalid characters, duplicates, inconsistent prefixes/suffixes).</li>
                 <li>Supports batch safe renaming strategies (opt-in) to avoid breaking references unexpectedly.</li>
                 <li>Validates basic scene organization rules (layers/groups).</li>
             </ul>
+</div>
 
-            <h3>Transform and Geometry Sanity</h3>
-            <ul>
+<div class="feature-group">
+<h3>Transform and Geometry Sanity</h3><ul class="feature-list">
                 <li>Detects objects with non reset transforms / unexpected scale.</li>
                 <li>Flags geometry issues that commonly break exports (degenerate data, invalid modifiers).</li>
                 <li>Optional "prepare for export" operations (reset XForm / collapse stack) as safe, explicit steps.</li>
             </ul>
+</div>
 
-            <h3>Materials and External Dependencies</h3>
-            <ul>
+<div class="feature-group">
+<h3>Materials and External Dependencies</h3><ul class="feature-list">
                 <li>Detects missing textures / broken file paths (when applicable).</li>
                 <li>Flags material setups that are not export friendly for specific targets.</li>
                 <li>Generates a list of external dependencies for packaging/handoff workflows.</li>
             </ul>
+</div>
 
-            <h3>Batch and Reporting</h3>
-            <ul>
+<div class="feature-group">
+<h3>Batch and Reporting</h3><ul class="feature-list">
                 <li>Runs on a single scene or in batch across a folder of scenes.</li>
                 <li>Produces a severity based report (ERROR/WARNING/INFO) for review.</li>
                 <li>Designed to integrate with pipeline "preflight" stages before export or delivery packaging.</li>
             </ul>
+</div>
+
         </section>
 
         <section>
@@ -118,7 +123,7 @@
 
         <section>
             <h2>Outputs</h2>
-            <ul>
+            <ul class="feature-list">
                 <li><strong>Cleaned scene:</strong> updated scene state ready for export (recommend to save as a new file after).</li>
                 <li><strong>Report:</strong> severity based list of issues and actions taken (JSON/HTML/text depending on your implementation).</li>
                 <li><strong>Dependency list (optional):</strong> external files required for packaging/handoff.</li>
@@ -127,7 +132,7 @@
 
         <section>
             <h2>Design Notes</h2>
-            <ul>
+            <ul class="feature-list">
                 <li>
                     <strong>Design intent:</strong> A preflight cleanup step for Max scenes that reduces downstream export failures and normalizes scenes
                     into predictable, pipeline friendly states.

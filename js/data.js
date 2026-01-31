@@ -1,10 +1,10 @@
-const projects = [
+window.projects = [
     {
         id: "graphics-project",
         title: "Graphic Engine",
         summary: "A module graphics engine that diplays a space scene.",
         tech: ["C#"],
-        page: "graphic-engine.html",
+        page: "project-graphic-engine.html",
         domain: "VFX",
         featured: false,
         github: "https://github.com/DouglasZingg/GraphicsProject"
@@ -15,7 +15,7 @@ const projects = [
         summary: "Production style pipeline utility for cleaning and validating 3ds Max scenes before export/hand off.",
         tech: ["Python"],
         plateform: "Max",
-        page: "max-scene-cleaner.html",
+        page: "project-max-scene-cleaner.html",
         domain: "VFX",
         featured: false,
         github: "https://github.com/DouglasZingg/max-scene-cleaner"
@@ -26,7 +26,7 @@ const projects = [
         summary: "A production style validation and auto fix tool for Autodesk Maya (2020-2026) built with Python and Qt.",
         tech: ["Python"],
         plateform: "Maya",
-        page: "maya-asset-validator.html",
+        page: "project-maya-asset-validator.html",
         domain: "VFX",
         featured: false,
         github: "https://github.com/DouglasZingg/maya-asset-validator"
@@ -36,8 +36,8 @@ const projects = [
         title: "Pipeline Devlivery Packager",
         summary: "Standalone desktop pipeline utility that validates and packages an asset delivery into a clean 'studio drop' layout, then exports a manifest.json and an HTML report.",
         tech: ["Python"],
-        page: "pipeline-delivery-packager.html",
-        domain: ["VFX", "Game Development"], 
+        page: "project-pipeline-delivery-packager.html",
+        domain: "VFX",
         featured: false,
         github: "https://github.com/DouglasZingg/pipeline-delivery-packager"
     },
@@ -47,7 +47,7 @@ const projects = [
         summary: "Wave based survival zombie shooter.",
         tech: ["C#"],
         plateform: "Unity", 
-        page: "reactionary.html",
+        page: "project-reactionary.html",
         domain: "Game Development",
         featured: true,
         github: "https://github.com/DouglasZingg/Reactionary-Final-Build"
@@ -58,7 +58,7 @@ const projects = [
         summary: "A standalone PySide6 desktop tool that connects to Flow Production Tracking (ShotGrid).",
         tech: ["Python"],
         plateform: "ShotGrid",
-        page: "shotgrid-mini-publisher.html",
+        page: "project-shotgrid-mini-publisher.html",
         domain: "VFX",
         featured: true,
         github: "https://github.com/DouglasZingg/shotgrid-mini-publisher"
@@ -68,7 +68,7 @@ const projects = [
         title: "Studio Folder Builder",
         summary: "A standalone Python ans PySide6 tool that generates studio style project folder structures from configurable templates.",
         tech: ["Python"],
-        page: "studio-folder-builder.html",
+        page: "project-studio-folder-builder.html",
         domain: "VFX",
         featured: false,
         github: "https://github.com/DouglasZingg/studio-folder-builder"
@@ -79,8 +79,8 @@ const projects = [
         summary: "Standalone Python and PySide6 utility that validates Substance Painter or game ready texture exports and produces severity based QA reports.",
         tech: ["Python"],
         plateform: ["Unity", "Unreal"],
-        page: "texture-pack-validator.html",
-        domain: ["VFX" ,"Game Devlopment"],
+        page: "project-texture-pack-validator.html",
+        domain: "Game Devlopment",
         featured: false,
         github: "https://github.com/DouglasZingg/texture-pack-validator"
     },
@@ -90,7 +90,7 @@ const projects = [
         summary: "Horror survival game",
         tech: ["C#"],
         plateform: "Unity",
-        page: "tormented-souls.html",
+        page: "project-tormented-souls.html",
         domain: "Game Development",
         featured: false,
         github: "https://github.com/DouglasZingg/TormentedSouls"
@@ -101,8 +101,8 @@ const projects = [
         summary: "Production style Unreal Engine Editor Utility Widget for validating and preparing assets for game/film/mobile pipelines.",
         tech: ["Python"],
         plateform: "Max",
-        page: "ue-asset-prep-tool.html",
-        domain: ["VFX", "Game Development"], 
+        page: "project-ue-asset-prep-tool.html",
+        domain: "Game Development", 
         featured: false,
         github: "https://github.com/DouglasZingg/ue-asset-prep-tool"
     },
@@ -111,7 +111,7 @@ const projects = [
         title: "USD Inspsctor Packager",
         summary: "Standalone Python desktop app for inspecting USD assets and packaging dependencies into a portable drop.",
         tech: ["Python"],
-        page: "usd-inspector-packager.html",
+        page: "project-usd-inspector-packager.html",
         domain: "VFX",
         featured: false,
         github: "https://github.com/DouglasZingg/usd-inspector-packager"

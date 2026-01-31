@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,34 +55,38 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Planning and Validation</h3>
-            <ul>
+<div class="feature-group">
+<h3>Planning and Validation</h3><ul>
                 <li>Validates required folders/files before packaging (errors block output).</li>
                 <li>Separates validation results into <strong>ERROR</strong> vs <strong>WARNING</strong> for clear triage.</li>
                 <li>Preview/plan step to show what will be copied and where (safe “no surprises” workflow).</li>
             </ul>
+</div>
 
-            <h3>Packaging and Structure</h3>
-            <ul>
+<div class="feature-group">
+<h3>Packaging and Structure</h3><ul>
                 <li>Builds a clean output delivery folder with consistent structure.</li>
                 <li>Category routing (organizes files into expected destinations based on rules).</li>
                 <li>Collision handling to avoid accidental overwrites.</li>
                 <li>Supports "skip existing" vs "overwrite" behavior (user-controlled).</li>
             </ul>
+</div>
 
-            <h3>Manifest an Integrity</h3>
-            <ul>
+<div class="feature-group">
+<h3>Manifest an Integrity</h3><ul>
                 <li>Generates <code>manifest.json</code> describing all packaged files (src->dst mapping, sizes, timestamps).</li>
                 <li>Optional file hashing (e.g., SHA-256) written into the manifest for integrity checks.</li>
                 <li>Detects mismatches between expected and actual content (helps catch bad handoffs early).</li>
             </ul>
+</div>
 
-            <h3>Batch Friendly</h3>
-            <ul>
+<div class="feature-group">
+<h3>Batch Friendly</h3><ul>
                 <li>Designed to run consistently for repeated deliveries (predictable output).</li>
                 <li>Clear logs and structured outputs suitable for CI or pipeline integration.</li>
             </ul>
+</div>
+
         </section>
 
         <section>

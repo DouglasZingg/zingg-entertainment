@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,46 +55,52 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Context Selection and Workflow</h3>
-            <ul>
+<div class="feature-group">
+<h3>Context Selection and Workflow</h3><ul>
                 <li>Connects to Flow PT / ShotGrid and loads available Projects.</li>
                 <li>Browses Project -> Shot -> Task to establish publish context.</li>
                 <li>Guided publish flow designed for repeatable, productionstyle usage.</li>
             </ul>
+</div>
 
-            <h3>Validation and Safety</h3>
-            <ul>
+<div class="feature-group">
+<h3>Validation and Safety</h3><ul>
                 <li>Prepublish validation step to catch missing or invalid inputs.</li>
                 <li>Validation errors block publishing to prevent bad tracking data.</li>
                 <li>Warnings are shown clearly while allowing a publish when appropriate.</li>
             </ul>
+</div>
 
-            <h3>Version Creation and Uploads</h3>
-            <ul>
+<div class="feature-group">
+<h3>Version Creation and Uploads</h3><ul>
                 <li>Creates a ShotGrid <strong>Version</strong> linked to the selected Shot and Task.</li>
                 <li>Optional thumbnail upload and optional movie upload.</li>
                 <li>Optional file attachments uploads (schema-aware).</li>
             </ul>
+</div>
 
-            <h3>Local Publish Output</h3>
-            <ul>
+<div class="feature-group">
+<h3>Local Publish Output</h3><ul>
                 <li>Creates a structured publish folder under a configurable publish root.</li>
                 <li>Writes <code>manifest.json</code> describing publish metadata and files.</li>
                 <li>Designed to mirror "publish drop" conventions used in production pipelines.</li>
             </ul>
+</div>
 
-            <h3>Optional PublishedFile Support</h3>
-            <ul>
+<div class="feature-group">
+<h3>Optional PublishedFile Support</h3><ul>
                 <li>Attempts PublishedFile creation when enabled (optional/nonblocking).</li>
                 <li>Handles local storage/path constraints gracefully without failing the main publish.</li>
             </ul>
+</div>
 
-            <h3>Demo Mode (DRY_RUN)</h3>
-            <ul>
+<div class="feature-group">
+<h3>Demo Mode (DRY_RUN)</h3><ul>
                 <li><code>DRY_RUN</code> simulates API actions without requiring credentials.</li>
                 <li>Still generates local publish output to demonstrate end-to-end workflow.</li>
             </ul>
+</div>
+
         </section>
 
         <section>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -21,12 +21,16 @@
         <section>
             <h1>Projects</h1>
 
-            <div class="filters">
-                <button data-tech="all">All</button>
-                <button data-tech="C++">C++</button>
-                <button data-tech="C#">C#</button>
-                <button data-tech="Python">Python</button>
-                <button data-tech="JavaScript">JavaScript</button>
+            <div class="filter-bar">
+                <div class="filters" id="filters">
+                    <button data-tech="all">All</button>
+                    <button data-tech="C++">C++</button>
+                    <button data-tech="C#">C#</button>
+                    <button data-tech="Python">Python</button>
+                    <button data-tech="JavaScript">JavaScript</button>
+                </div>
+
+                <p id="project-count" class="meta count"></p>
             </div>
 
             <div id="project-list"></div>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,41 +55,46 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Dependency Inspection</h3>
-            <ul>
+<div class="feature-group">
+<h3>Dependency Inspection</h3><ul>
                 <li>Supports <code>.usd</code>, <code>.usda</code>, <code>.usdc</code>, and <code>.usdz</code>.</li>
                 <li>Scans for sublayers, references, payloads, and texture dependencies.</li>
                 <li>Flags missing/unresolved/invalid dependencies with severity (<strong>ERROR</strong>, <strong>WARNING</strong>, <strong>INFO</strong>).</li>
                 <li>Exports structured scan results to <code>report.json</code>.</li>
             </ul>
+</div>
 
-            <h3>Packaging & Manifests</h3>
-            <ul>
+<div class="feature-group">
+<h3>Packaging & Manifests</h3><ul>
                 <li>Packages USD files and resolved dependencies into a clean output folder structure.</li>
                 <li>Writes <code>manifest.json</code> with src->dst mapping, file metadata, and missing/skipped dependencies.</li>
                 <li>Collision safe copying to prevent overwrites when file names conflict.</li>
                 <li>Optional SHA-256 hashing for integrity verification.</li>
             </ul>
+</div>
 
-            <h3>Portable Mode</h3>
-            <ul>
+<div class="feature-group">
+<h3>Portable Mode</h3><ul>
                 <li>Rewrites asset paths inside packaged USD files to use packaged relative paths.</li>
                 <li>Produces self contained drops suitable for vendor handoff, review, or archival.</li>
             </ul>
+</div>
 
-            <h3>Batch Processing</h3>
-            <ul>
+<div class="feature-group">
+<h3>Batch Processing</h3><ul>
                 <li>Scans/packages folders of USD assets in one run.</li>
                 <li>Generates <code>batch_summary.json</code> with per file status and aggregate totals.</li>
                 <li>Automation friendly workflow for large asset sets.</li>
             </ul>
+</div>
 
-            <h3>Demo & Validation Utilities</h3>
-            <ul>
+<div class="feature-group">
+<h3>Demo & Validation Utilities</h3><ul>
                 <li>Includes demo/sample generators to validate common dependency scenarios.</li>
                 <li>Useful for testing “missing vs resolved” cases and demonstrating tool behavior.</li>
             </ul>
+</div>
+
         </section>
 
         <section>

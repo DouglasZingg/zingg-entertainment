@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,42 +55,47 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Validation Coverage</h3>
-            <ul>
+<div class="feature-group">
+<h3>Validation Coverage</h3><ul>
                 <li><strong>Naming checks:</strong> duplicate names, invalid characters, naming conventions.</li>
                 <li><strong>Transform checks:</strong> non zero transforms, frozen transforms, pivot expectations (configurable).</li>
                 <li><strong>Geometry checks:</strong> non manifold geometry, lamina faces, bad normals, history issues.</li>
                 <li><strong>Texture checks:</strong> missing file paths, broken connections, common texture pipeline pitfalls.</li>
             </ul>
+</div>
 
-            <h3>Severity Based Reporting</h3>
-            <ul>
+<div class="feature-group">
+<h3>Severity Based Reporting</h3><ul>
                 <li>Findings categorized as <strong>ERROR</strong>, <strong>WARNING</strong>, and <strong>INFO</strong>.</li>
                 <li>Errors block a "ready for export" state. Warnings highlight risk. Info provides helpful notes.</li>
                 <li>Designed for fast triage and consistent standards enforcement.</li>
             </ul>
+</div>
 
-            <h3>Auto Fix Actions</h3>
-            <ul>
+<div class="feature-group">
+<h3>Auto Fix Actions</h3><ul>
                 <li>Optional auto fix operations for common issues (safe, targeted actions).</li>
                 <li>Fix flows designed to be explicit and auditable (users choose what to fix).</li>
                 <li>Supports iterative "scan -> fix -> rescan" workflow.</li>
             </ul>
+</div>
 
-            <h3>UI and Compatibility</h3>
-            <ul>
+<div class="feature-group">
+<h3>UI and Compatibility</h3><ul>
                 <li>Qt UI designed for Maya: PySide6 (newer Maya) with fallback compatibility for PySide2/PySide.</li>
                 <li>Targets Maya 2020–2026 style environments.</li>
                 <li>Organized modular checks (easy to extend with new rules).</li>
             </ul>
+</div>
 
-            <h3>Artist-Friendly Workflow</h3>
-            <ul>
+<div class="feature-group">
+<h3>Artist-Friendly Workflow</h3><ul>
                 <li>Clear issue lists with actionable descriptions.</li>
                 <li>Designed to be usable without deep technical knowledge.</li>
                 <li>Emphasizes predictable standards and export readiness.</li>
             </ul>
+</div>
+
         </section>
 
         <section>

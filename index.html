@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -22,17 +22,9 @@
         <section class="hero">
             <h1>Tools & Pipeline Developer</h1>
             <p>
-                I build production-focused tools and systems for game and VFX pipelines.
+                I build production focused tools and systems for game and VFX pipelines.
                 My work focuses on reliability, automation, and developer ergonomics.
             </p>
-
-            <div class="hero-cta">
-                <a class="btn primary" href="projects.html">View Projects</a>
-                <!-- Put the PDF in /assets/ and link it here -->
-                <a class="btn" href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">
-                    Skills Matrix (PDF)
-                </a>
-            </div>
         </section>
 
         <section class="value-strip">
@@ -56,12 +48,16 @@
                 <p class="section-subtitle">Filter by language to quickly find relevant work.</p>
             </div>
 
-            <div class="filters">
-                <button data-tech="all">All</button>
-                <button data-tech="C++">C++</button>
-                <button data-tech="C#">C#</button>
-                <button data-tech="Python">Python</button>
-                <button data-tech="JavaScript">JavaScript</button>
+            <div class="filter-bar">
+                <div class="filters">
+                    <button data-tech="all">All</button>
+                    <button data-tech="C++">C++</button>
+                    <button data-tech="C#">C#</button>
+                    <button data-tech="Python">Python</button>
+                    <button data-tech="JavaScript">JavaScript</button>
+                </div>
+
+                <p id="featured-count" class="meta count"></p>
             </div>
 
             <div id="featured-projects"></div>

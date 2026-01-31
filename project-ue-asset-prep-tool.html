@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,41 +55,46 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Asset Selection and Scope</h3>
-            <ul>
+<div class="feature-group">
+<h3>Asset Selection and Scope</h3><ul>
                 <li>Run on selected assets or scan an entire content folder.</li>
                 <li>Targets Static Mesh validation as a core production use-case.</li>
                 <li>Designed to extend to other asset types (textures/materials) as needed.</li>
             </ul>
+</div>
 
-            <h3>Static Mesh Validation</h3>
-            <ul>
+<div class="feature-group">
+<h3>Static Mesh Validation</h3><ul>
                 <li><strong>LOD checks:</strong> validates LOD presence and basic configuration expectations.</li>
                 <li><strong>Collision checks:</strong> detects missing collision and flags non compliant setups.</li>
                 <li><strong>Naming rules:</strong> validates naming conventions for asset types/prefixes.</li>
                 <li><strong>Placement rules:</strong> checks folder placement under expected content paths.</li>
             </ul>
+</div>
 
-            <h3>Reporting</h3>
-            <ul>
+<div class="feature-group">
+<h3>Reporting</h3><ul>
                 <li>Severity based results (<strong>ERROR</strong>/<strong>WARNING</strong>/<strong>INFO</strong>).</li>
                 <li>Exports a structured JSON report for tracking, review, or CI ingestion.</li>
                 <li>Report supports pipeline "proof" for content readiness.</li>
             </ul>
+</div>
 
-            <h3>Workflow and UX</h3>
-            <ul>
+<div class="feature-group">
+<h3>Workflow and UX</h3><ul>
                 <li>Editor native UI built for fast iteration: scan -> review -> fix -> rescan.</li>
                 <li>Designed to reduce context switching (fix issues inside the editor).</li>
                 <li>Clear output messaging for artists and technical users.</li>
             </ul>
+</div>
 
-            <h3>Configurable Rules (Pipeline-Friendly)</h3>
-            <ul>
+<div class="feature-group">
+<h3>Configurable Rules (Pipeline-Friendly)</h3><ul>
                 <li>Rules can be tuned perproject (naming, folder paths, validation thresholds).</li>
                 <li>Supports consistency across teams by keeping standards explicit.</li>
             </ul>
+</div>
+
         </section>
 
         <section>

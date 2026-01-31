@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -56,39 +56,44 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Template Based Structure</h3>
-            <ul>
+<div class="feature-group">
+<h3>Template Based Structure</h3><ul>
                 <li>Templates define project level folders and per shot/asset trees.</li>
                 <li>Supports starter files (entries ending in <code>.md</code> / <code>.json</code> are created as files).</li>
                 <li>Templates are editable and live in the repo <code>templates/</code> folder.</li>
             </ul>
+</div>
 
-            <h3>Two Production Modes</h3>
-            <ul>
+<div class="feature-group">
+<h3>Two Production Modes</h3><ul>
                 <li><strong>Shots Mode:</strong> generates <code>sequences/SQ###/SH###/...</code> style trees.</li>
                 <li><strong>Assets Mode:</strong> generates <code>assets/&lt;category&gt;/&lt;asset&gt;/...</code> style trees.</li>
             </ul>
+</div>
 
-            <h3>Preview Plan and Safe Build</h3>
-            <ul>
+<div class="feature-group">
+<h3>Preview Plan and Safe Build</h3><ul>
                 <li>Preview Plan shows exactly what will be created before touching the filesystem.</li>
                 <li>Build step creates folders/files and tracks created, skipped or, errors counts.</li>
                 <li>Designed to reduce risk (preview first, explicit build action).</li>
             </ul>
+</div>
 
-            <h3>Reproducibility</h3>
-            <ul>
+<div class="feature-group">
+<h3>Reproducibility</h3><ul>
                 <li>Save/Load job configs to rerun identical builds later (reproducible project setup).</li>
                 <li>Manifest output provides an audit trail of what was created and what was skipped.</li>
             </ul>
+</div>
 
-            <h3>Optional Flow/PT (ShotGrid) Integration</h3>
-            <ul>
+<div class="feature-group">
+<h3>Optional Flow/PT (ShotGrid) Integration</h3><ul>
                 <li>Optional dependency set for connecting to Flow/PT and loading sequences/shots.</li>
                 <li>Uses a local <code>flow_config.json</code> (gitignored) for credentials and project ID.</li>
                 <li>Supports studios with custom fields (troubleshooting guidance included in repo docs).</li>
             </ul>
+</div>
+
         </section>
 
         <section>

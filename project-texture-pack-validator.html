@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
     <nav>
-        <a href="./" class="logo">DZ</a>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
         <div class="nav-links">
             <a href="projects.html">Projects</a>
             <a href="skills.html">Skills</a>
@@ -55,47 +55,53 @@
 
         <section>
             <h2>Key Features</h2>
-
-            <h3>Profile-Aware Validation</h3>
-            <ul>
+<div class="feature-group">
+<h3>Profile-Aware Validation</h3><ul>
                 <li>Supports validation profiles for <strong>Unreal</strong>, <strong>Unity</strong>, and <strong>VFX</strong> delivery rules.</li>
                 <li>Required map rules vary by profile (e.g., BaseColor and Normal always required. ORM/individual channels depending on target).</li>
                 <li>Severity based results: <strong>ERROR</strong> (blocks delivery), <strong>WARNING</strong> (needs review), <strong>INFO</strong> (notes).</li>
             </ul>
+</div>
 
-            <h3>Required Maps and Naming QA</h3>
-            <ul>
+<div class="feature-group">
+<h3>Required Maps and Naming QA</h3><ul>
                 <li>Detects missing required maps for an asset set (BaseColor/Normal plus ORM or AO/Roughness/Metallic based on profile).</li>
                 <li>Identifies naming issues that prevent correct map classification (type parsing and version suffix handling).</li>
                 <li>Optional <strong>auto fix naming</strong> to rename files into expected conventions (batch safe option available).</li>
             </ul>
+</div>
 
-            <h3>Image Metadata and Format Checks (Pillow)</h3>
-            <ul>
+<div class="feature-group">
+<h3>Image Metadata and Format Checks (Pillow)</h3><ul>
                 <li>Reads resolution and warns on nonpower of two textures (where applicable).</li>
                 <li>Warns/errors on oversized textures based on configured max size thresholds.</li>
                 <li>Validates extension expectations (VFX can allow EXR more broadly).</li>
                 <li>Performs basic channel sanity checks (e.g., expected channel counts).</li>
             </ul>
+</div>
 
-            <h3>ORM Packed Texture Validation</h3>
-            <ul>
+<div class="feature-group">
+<h3>ORM Packed Texture Validation</h3><ul>
                 <li>Validates packed ORM textures: must be RGB (3 channels).</li>
                 <li>Warns on unexpected alpha channels.</li>
                 <li>Warns when channels look suspiciously flat/identical (common export mistakes).</li>
             </ul>
+</div>
 
-            <h3>Batch Scan and Watch Mode</h3>
-            <ul>
+<div class="feature-group">
+<h3>Batch Scan and Watch Mode</h3><ul>
                 <li>Batch scanning across multiple folders with an aggregated summary export.</li>
                 <li>Optional "watch folders" mode to auto rescan on changes (best effort, debounced).</li>
             </ul>
+</div>
 
-            <h3>Reporting</h3>
-            <ul>
+<div class="feature-group">
+<h3>Reporting</h3><ul>
                 <li>Exports folder reports to <code>report.json</code> and <code>report.html</code>.</li>
                 <li>Exports batch summaries to <code>batch_report.json</code> for pipeline tracking.</li>
             </ul>
+</div>
+
         </section>
 
         <section>

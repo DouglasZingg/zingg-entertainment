@@ -1,5 +1,15 @@
 window.projects = [
     {
+        id: "dungeon-map-generator",
+        title: "Dungeon Map Generator",
+        summary: "A tool for generating random dungeon maps for tabletop RPGs.",
+        tech: ["JavaScript"],
+        page: "project-dungeon-map-generator.html",
+        domain: "Game Development",
+        featured: true,
+        github: "https://github.com/DouglasZingg/dungeon-map-generator"
+    },
+    {
         id: "graphics-project",
         title: "Graphic Engine",
         summary: "A module graphics engine that diplays a space scene.",

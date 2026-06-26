@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dungeon Map Generator | Douglas Zingg</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo" aria-label="Home">DZ</a>
+        <div class="nav-links">
+            <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="about.html">About</a>
+            <a href="https://github.com/DouglasZingg" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="project-detail">
+
+        <header class="project-header">
+            <h1>Dungeon Map Generator</h1>
+            <p class="project-subtitle">
+                A Java desktop tool for generating random dungeon maps for tabletop RPGs and game design.
+            </p>
+
+            <div class="project-meta">
+                <span>Java</span>
+                <span>Swing</span>
+                <span>Procedural Generation</span>
+                <span>Game Tools</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Overview</h2>
+            <p>
+                Dungeon Map Generator is a Java Swing desktop tool I built to create random dungeon layouts for tabletop RPGs,
+                dungeon crawler prototypes, and game design experimentation. The project started as a simple console-based map
+                generator and grew into an interactive editor with themes, visual rendering, generation settings, PNG export,
+                and a Windows build script.
+            </p>
+        </section>
+
+        <section>
+            <h2>What I Built</h2>
+            <ul>
+                <li>Procedural dungeon generation with rooms, hallways, doors, enemies, treasure, traps, keys, and exits</li>
+                <li>Multiple room shapes, including rectangle, L-shaped, T-shaped, and cross-shaped rooms</li>
+                <li>Main path, side path, and dead-end generation for more intentional dungeon flow</li>
+                <li>Theme support for changing the visual style of generated maps</li>
+                <li>Interactive Java Swing UI with adjustable generation settings</li>
+                <li>PNG export for saving generated dungeon maps</li>
+                <li>Windows build script for creating a runnable desktop app</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Controls & Features</h2>
+            <ul>
+                <li><strong>Generate Dungeon</strong> — creates a new dungeon using the selected settings</li>
+                <li><strong>Regenerate From Seed</strong> — recreates the same dungeon layout from the current seed</li>
+                <li><strong>Export PNG</strong> — saves the current dungeon map as an image</li>
+                <li><strong>Theme Selector</strong> — changes the map color palette</li>
+                <li><strong>Map Size Presets</strong> — supports preset map dimensions for different dungeon sizes</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Build & Run</h2>
+            <ul>
+                <li>Built with Java 21</li>
+                <li>Uses Java Swing for the desktop interface</li>
+                <li>Run from source using <code>javac</code> and <code>java</code></li>
+                <li>Includes a Windows batch file for building a packaged app with <code>jpackage</code></li>
+            </ul>
+            <p class="meta">
+                The packaged Windows version can be launched as a standalone desktop application.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Notes</h2>
+            <ul>
+                <li>Focus: procedural generation, editor-style UI design, and game tool development</li>
+                <li>Uses seed-based generation so dungeon layouts can be recreated</li>
+                <li>Hallways use pathing logic to reduce awkward room intersections</li>
+                <li>Room placement and generation rules were iterated on to create denser, more usable layouts</li>
+                <li>The project was cleaned up and commented for readability as a finished portfolio piece</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Links</h2>
+            <p>
+                <a href="https://github.com/DouglasZingg/dungeon-map-generator" target="_blank">View Source Code</a>
+            </p>
+        </section>
+
+        <section>
+            <p><a href="projects.html">Back to Projects</a></p>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-left">© <span id="year"></span> Douglas Zingg</div>
+            <div class="footer-right">
+                <a href="assets/Douglas_Zingg_Skills_Matrix.pdf" target="_blank" rel="noopener">Skills PDF</a>
+                <a href="https://github.com/DouglasZingg" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
